@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "nikomod",
+	"version": "${version}",
+	"name": "NikoMod",
+	"description": "The Void Must Grow",
+	"authors": [
+		"Niko!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "MIT",
+	"icon": "assets/nikomod/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"niko.nikomod.NikoMod"
+		],
+		"fabric-datagen": [
+			"niko.nikomod.NikoModDataGenerator"
+		],
+		"client": [
+			"niko.nikomod.NikoModClient"
+		]
+	},
+	"mixins": [
+		"nikomod.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.14",
+		"minecraft": "~1.21",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
