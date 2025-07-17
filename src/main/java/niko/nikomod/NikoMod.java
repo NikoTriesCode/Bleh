@@ -2,6 +2,8 @@ package niko.nikomod;
 
 import net.fabricmc.api.ModInitializer;
 
+import niko.nikomod.block.ModBlocks;
+import niko.nikomod.item.ModItems;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,5 +15,7 @@ public class NikoMod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		ModItems.registerModItems();
+		ModBlocks.registerModBlocks();
 	}
 }
