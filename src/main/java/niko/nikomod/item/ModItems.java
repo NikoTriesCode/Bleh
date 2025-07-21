@@ -12,16 +12,20 @@ public class ModItems {
     public static final Item STARSILVER_INGOT = registerItem("starsilver_ingot", new Item(new Item.Settings()));
     public static final Item RAW_STARSILVER = registerItem("raw_starsilver", new Item(new Item.Settings()));
 
+
+    public static final Item IRON_HAMMER = registerItem("iron_hammer", new Item(new Item.Settings().maxDamage(125)));
+
     private static Item registerItem(String name, Item item){
         return Registry.register(Registries.ITEM, Identifier.of(NikoMod.MOD_ID, name), item);
     }
 
     public static void registerModItems(){
-        NikoMod.LOGGER.info("Registring Mod Items for " + NikoMod.MOD_ID);
+        NikoMod.LOGGER.info("Registering Mod Items for " + NikoMod.MOD_ID);
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(fabricItemGroupEntries -> {
             fabricItemGroupEntries.add(RAW_STARSILVER);
             fabricItemGroupEntries.add(STARSILVER_INGOT);
+            fabricItemGroupEntries.add(IRON_HAMMER);
 
         });
     }

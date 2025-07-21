@@ -1,4 +1,12 @@
 {
   "item.nikomod.starsilver_ingot": "Starsilver Ingot",
-  "item.nikomod.raw_starsilver": "Raw Starsilver"
+  "item.nikomod.raw_starsilver": "Raw Starsilver",
+  "item.nikomod.iron_hammer": "Iron Hammer",
+
+  "block.nikomod.starsilver_block": "Block of Starsilver",
+  "block.nikomod.raw_starsilver_block": "Block of Raw Starsilver",
+  "block.nikomod.starsilver_ore": "Starsilver Ore",
+  "block.nikomod.deepslate_starsilver_ore": "Deepslate Starsilver Ore",
+
+  "itemgroup.nikomod.nikos_stuff": "Niko's Modded Stuff"
 }
