@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "nikomod:raw_starsilver_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "nikomod:raw_starsilver"
+  }
+}

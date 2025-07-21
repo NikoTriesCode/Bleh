@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 125,
+  "experience": 0.7,
+  "group": "starsilver",
+  "ingredient": {
+    "item": "nikomod:starsilver_ore"
+  },
+  "result": {
+    "id": "nikomod:starsilver_ingot"
+  }
+}
