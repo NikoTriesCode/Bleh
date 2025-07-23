@@ -19,15 +19,24 @@ public class ModItemGroups {
                         //Items
                         entries.add(ModItems.RAW_STARSILVER);
                         entries.add(ModItems.STARSILVER_INGOT);
-                        entries.add(ModItems.IRON_HAMMER);
+                        entries.add(ModItems.RAW_HELLCHROME);
+                        entries.add(ModItems.HELLCHROME_INGOT);
                         //Blocks
                         entries.add(ModBlocks.STARSILVER_ORE);
                         entries.add(ModBlocks.DEEPSLATE_STARSILVER_ORE);
                         entries.add(ModBlocks.RAW_STARSILVER_BLOCK);
                         entries.add(ModBlocks.STARSILVER_BLOCK);
+                        entries.add(ModBlocks.HELLCHROME_ORE);
+                        entries.add(ModBlocks.RAW_HELLCHROME_BLOCK);
+                        entries.add(ModBlocks.HELLCHROME_BLOCK);
                         //Armor
                         //Weapons
                         //Useful Items
+                        entries.add(ModItems.COPPER_HAMMER);
+                        entries.add(ModItems.GOLD_HAMMER);
+                        entries.add(ModItems.IRON_HAMMER);
+                        entries.add(ModItems.DIAMOND_HAMMER);
+                        entries.add(ModItems.NETHERITE_HAMMER);
                     })
                     .build());
 

@@ -1,6 +1,5 @@
 package niko.nikomod.util;
 
-import net.fabricmc.fabric.mixin.tag.TagKeyMixin;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryKeys;
@@ -10,6 +9,10 @@ import niko.nikomod.NikoMod;
 
 public class ModTags {
     public static class Blocks{
+
+        public static final TagKey<Block> HAMMER_EFFICIENT = createTag("hammer_efficient");
+
+
         private static TagKey<Block> createTag(String name){
             return TagKey.of(RegistryKeys.BLOCK, Identifier.of(NikoMod.MOD_ID, name));
         }

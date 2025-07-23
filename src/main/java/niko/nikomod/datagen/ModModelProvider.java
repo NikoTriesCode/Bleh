@@ -19,13 +19,23 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STARSILVER_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RAW_STARSILVER_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STARSILVER_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.HELLCHROME_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.HELLCHROME_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RAW_HELLCHROME_BLOCK);
     }
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
         itemModelGenerator.register(ModItems.STARSILVER_INGOT, Models.GENERATED);
         itemModelGenerator.register(ModItems.RAW_STARSILVER, Models.GENERATED);
+        itemModelGenerator.register(ModItems.HELLCHROME_INGOT, Models.GENERATED);
+        itemModelGenerator.register(ModItems.RAW_HELLCHROME, Models.GENERATED);
 
-        itemModelGenerator.register(ModItems.IRON_HAMMER, Models.GENERATED);
+        itemModelGenerator.register(ModItems.IRON_HAMMER, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.COPPER_HAMMER, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.GOLD_HAMMER, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.DIAMOND_HAMMER, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.NETHERITE_HAMMER, Models.HANDHELD);
+
     }
 }

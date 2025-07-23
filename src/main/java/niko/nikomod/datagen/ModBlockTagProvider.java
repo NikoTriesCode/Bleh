@@ -26,7 +26,5 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.RAW_STARSILVER_BLOCK)
                 .add(ModBlocks.STARSILVER_ORE)
                 .add(ModBlocks.DEEPSLATE_STARSILVER_ORE);
-
-
     }
 }

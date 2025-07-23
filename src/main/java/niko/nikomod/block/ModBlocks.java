@@ -8,7 +8,6 @@ import net.minecraft.block.MapColor;
 import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -17,7 +16,6 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import niko.nikomod.NikoMod;
 
-import static net.minecraft.block.Blocks.IRON_ORE;
 
 public class ModBlocks {
 
@@ -27,7 +25,7 @@ public class ModBlocks {
 
     public static final Block RAW_STARSILVER_BLOCK = registerBlock("raw_starsilver_block",
             new Block(AbstractBlock.Settings.create().mapColor(MapColor.RAW_IRON_PINK).instrument(NoteBlockInstrument.BASEDRUM)
-                    .requiresTool().strength(5.0F, 6.0F)));
+                    .requiresTool().strength(3.5F, 2.0F)));
 
     public static final Block STARSILVER_ORE = registerBlock("starsilver_ore",
             new ExperienceDroppingBlock(
@@ -40,6 +38,21 @@ public class ModBlocks {
             new ExperienceDroppingBlock(
                     ConstantIntProvider.create(0),
                     AbstractBlock.Settings.copyShallow(STARSILVER_ORE).mapColor(MapColor.DEEPSLATE_GRAY).strength(5.0F, 2.5F).sounds(BlockSoundGroup.DEEPSLATE)
+            ));
+
+    public static final Block HELLCHROME_ORE = registerBlock("hellchrome_ore",
+            new ExperienceDroppingBlock(
+                    ConstantIntProvider.create(0),
+                    AbstractBlock.Settings.create().mapColor(MapColor.BRIGHT_RED)
+                            .instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(3.0F, 3.5F)
+            ));
+
+    public static final Block RAW_HELLCHROME_BLOCK = registerBlock("raw_hellchrome_block",
+            new Block(AbstractBlock.Settings.create().mapColor(MapColor.RAW_IRON_PINK).instrument(NoteBlockInstrument.BASEDRUM)
+                    .requiresTool().strength(3.0F, 3.5F)));
+
+    public static final Block HELLCHROME_BLOCK = registerBlock("hellchrome_block",
+            new Block(AbstractBlock.Settings.create().mapColor(MapColor.BRIGHT_RED).instrument(NoteBlockInstrument.BASS)
             ));
 
     private static Block registerBlock(String name, Block block){
@@ -59,6 +72,9 @@ public class ModBlocks {
             fabricItemGroupEntries.add(ModBlocks.RAW_STARSILVER_BLOCK);
             fabricItemGroupEntries.add(ModBlocks.STARSILVER_ORE);
             fabricItemGroupEntries.add(ModBlocks.DEEPSLATE_STARSILVER_ORE);
+            fabricItemGroupEntries.add(ModBlocks.RAW_HELLCHROME_BLOCK);
+            fabricItemGroupEntries.add(ModBlocks.HELLCHROME_ORE);
+            fabricItemGroupEntries.add(ModBlocks.HELLCHROME_BLOCK);
         });
     }
 }

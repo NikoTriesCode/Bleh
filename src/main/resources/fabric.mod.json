@@ -5,11 +5,12 @@
 	"name": "NikoMod",
 	"description": "The Void Must Grow",
 	"authors": [
-		"Niko!"
+		"Niko!",
+		"Textures: Plawg (aka: Plawgorlia)"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/NikoTriesCode/Bleh"
 	},
 	"license": "MIT",
 	"icon": "assets/nikomod/icon.png",

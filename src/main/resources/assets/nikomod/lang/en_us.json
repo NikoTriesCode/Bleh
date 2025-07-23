@@ -1,12 +1,22 @@
 {
   "item.nikomod.starsilver_ingot": "Starsilver Ingot",
   "item.nikomod.raw_starsilver": "Raw Starsilver",
+  "item.nikomod.raw_hellchrome": "Raw Netherchrome",
+  "item.nikomod.hellchrome_ingot": "Netherchrome Ingot",
+
   "item.nikomod.iron_hammer": "Iron Hammer",
+  "item.nikomod.copper_hammer": "Copper Hammer",
+  "item.nikomod.gold_hammer": "Gold Hammer",
+  "item.nikomod.diamond_hammer": "Diamond Hammer",
+  "item.nikomod.netherite_hammer": "Netherite Hammer",
 
   "block.nikomod.starsilver_block": "Block of Starsilver",
   "block.nikomod.raw_starsilver_block": "Block of Raw Starsilver",
   "block.nikomod.starsilver_ore": "Starsilver Ore",
   "block.nikomod.deepslate_starsilver_ore": "Deepslate Starsilver Ore",
+  "block.nikomod.hellchrome_ore": "Netherchrome Ore",
+  "block.nikomod.hellchrome_Block": "Netherchrome Block",
+  "block.nikomod.raw_hellchrome_Block": "Raw Netherchrome Block",
 
   "itemgroup.nikomod.nikos_stuff": "Niko's Modded Stuff"
 }
