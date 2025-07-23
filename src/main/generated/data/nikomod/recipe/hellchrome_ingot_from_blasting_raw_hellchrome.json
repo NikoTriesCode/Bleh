@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 90,
+  "experience": 1.4,
+  "group": "hellchrome",
+  "ingredient": {
+    "item": "nikomod:raw_hellchrome"
+  },
+  "result": {
+    "id": "nikomod:hellchrome_ingot"
+  }
+}

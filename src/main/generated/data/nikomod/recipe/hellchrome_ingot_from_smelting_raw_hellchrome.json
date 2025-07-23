@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 180,
+  "experience": 1.4,
+  "group": "hellchrome",
+  "ingredient": {
+    "item": "nikomod:raw_hellchrome"
+  },
+  "result": {
+    "id": "nikomod:hellchrome_ingot"
+  }
+}

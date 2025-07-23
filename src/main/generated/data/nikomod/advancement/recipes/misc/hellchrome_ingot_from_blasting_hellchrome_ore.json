@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_hellchrome_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nikomod:hellchrome_ore"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:hellchrome_ingot_from_blasting_hellchrome_ore"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_hellchrome_ore"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:hellchrome_ingot_from_blasting_hellchrome_ore"
+    ]
+  }
+}
