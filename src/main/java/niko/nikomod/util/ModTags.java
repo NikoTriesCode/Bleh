@@ -22,6 +22,7 @@ public class ModTags {
 
         public static final TagKey<Item> HAMMER_ITEMS = createTag("hammer_items");
 
+        public static final TagKey<Item> SHEET_METAL = createTag("sheet_metals");
 
         private static TagKey<Item> createTag(String name){
         return TagKey.of(RegistryKeys.ITEM, Identifier.of(NikoMod.MOD_ID, name));

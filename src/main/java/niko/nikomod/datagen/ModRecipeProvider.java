@@ -7,11 +7,11 @@ import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.item.ItemConvertible;
-import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
 import niko.nikomod.block.ModBlocks;
 import niko.nikomod.item.ModItems;
+import niko.nikomod.util.ModTags;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -78,13 +78,40 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerNetheriteUpgradeRecipe(exporter, ModItems.DIAMOND_HAMMER, RecipeCategory.TOOLS, ModItems.NETHERITE_HAMMER);
 
 
-        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, IRON_INGOT)
-                .pattern("I")
-                .pattern("S")
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModItems.IRON_SHEET_METAL)
+                .input(IRON_INGOT)
+                .input(IRON_INGOT)
+                .input(ModTags.Items.HAMMER_ITEMS)
+                .criterion(hasItem(IRON_BLOCK), conditionsFromItem(IRON_BLOCK))
+                .offerTo(exporter);
 
-                .input('I', Blocks.IRON_BLOCK)
-                .input('S', ModItems.IRON_HAMMER)
-                .criterion(hasItem(Blocks.IRON_BLOCK), conditionsFromItem(Blocks.IRON_BLOCK))
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModItems.COPPER_SHEET_METAL)
+                .input(COPPER_INGOT)
+                .input(COPPER_INGOT)
+                .input(ModTags.Items.HAMMER_ITEMS)
+                .criterion(hasItem(COPPER_BLOCK), conditionsFromItem(COPPER_BLOCK))
+                .offerTo(exporter);
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModItems.GOLD_SHEET_METAL)
+                .input(GOLD_INGOT)
+                .input(GOLD_INGOT)
+                .input(ModTags.Items.HAMMER_ITEMS)
+                .criterion(hasItem(GOLD_BLOCK), conditionsFromItem(GOLD_BLOCK))
+                .offerTo(exporter);
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModItems.NETHERITE_SHEET_METAL)
+                .input(NETHERITE_INGOT)
+                .input(ModTags.Items.HAMMER_ITEMS)
+                .criterion(hasItem(NETHERITE_INGOT), conditionsFromItem(NETHERITE_INGOT))
+                .offerTo(exporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.DIAMOND_SHEET_METAL, 4)
+                .pattern(" D ")
+                .pattern("DID")
+                .pattern(" D ")
+                .input('D', DIAMOND)
+                .input('I', ModItems.IRON_SHEET_METAL)
+                .criterion(hasItem(DIAMOND), conditionsFromItem(DIAMOND))
                 .offerTo(exporter);
 
     }

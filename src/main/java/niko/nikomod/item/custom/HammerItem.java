@@ -16,8 +16,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolItem;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.util.Hand;
-import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import niko.nikomod.util.ModTags;
@@ -65,6 +63,20 @@ public class HammerItem extends ToolItem {
         stack.damage(1, attacker, EquipmentSlot.MAINHAND);
     }
 
+    @Override
+    public boolean hasRecipeRemainder() {
+        return true;
+    }
 
+    @Override
+    public ItemStack getRecipeRemainder(ItemStack stack) {
+        ItemStack damaged = stack.copy();
+        damaged.setDamage(stack.getDamage() + 2);
+
+        if (damaged.getDamage() >= damaged.getMaxDamage()) {
+            return ItemStack.EMPTY;
+        }
+
+        return damaged;
+    }
 }
-

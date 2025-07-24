@@ -1,5 +1,9 @@
 {
   "values": [
-    "nikomod:iron_hammer"
+    "nikomod:iron_hammer",
+    "nikomod:gold_hammer",
+    "nikomod:copper_hammer",
+    "nikomod:diamond_hammer",
+    "nikomod:netherite_hammer"
   ]
 }

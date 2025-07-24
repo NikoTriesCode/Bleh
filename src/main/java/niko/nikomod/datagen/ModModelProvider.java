@@ -31,6 +31,12 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.HELLCHROME_INGOT, Models.GENERATED);
         itemModelGenerator.register(ModItems.RAW_HELLCHROME, Models.GENERATED);
 
+        itemModelGenerator.register(ModItems.IRON_SHEET_METAL,Models.GENERATED);
+        itemModelGenerator.register(ModItems.GOLD_SHEET_METAL,Models.GENERATED);
+        itemModelGenerator.register(ModItems.COPPER_SHEET_METAL,Models.GENERATED);
+        itemModelGenerator.register(ModItems.DIAMOND_SHEET_METAL,Models.GENERATED);
+        itemModelGenerator.register(ModItems.NETHERITE_SHEET_METAL,Models.GENERATED);
+
         itemModelGenerator.register(ModItems.IRON_HAMMER, Models.HANDHELD);
         itemModelGenerator.register(ModItems.COPPER_HAMMER, Models.HANDHELD);
         itemModelGenerator.register(ModItems.GOLD_HAMMER, Models.HANDHELD);

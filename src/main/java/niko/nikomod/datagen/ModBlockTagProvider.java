@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
 import niko.nikomod.block.ModBlocks;
+import niko.nikomod.util.ModTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -19,12 +20,21 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.STARSILVER_BLOCK)
                 .add(ModBlocks.RAW_STARSILVER_BLOCK)
                 .add(ModBlocks.STARSILVER_ORE)
-                .add(ModBlocks.DEEPSLATE_STARSILVER_ORE);
+                .add(ModBlocks.DEEPSLATE_STARSILVER_ORE)
+                .add(ModBlocks.HELLCHROME_BLOCK)
+                .add(ModBlocks.RAW_HELLCHROME_BLOCK)
+                .add(ModBlocks.HELLCHROME_ORE);
+
+        getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
+                .add(ModBlocks.HELLCHROME_ORE)
+                .add(ModBlocks.RAW_HELLCHROME_BLOCK)
+                .add(ModBlocks.HELLCHROME_BLOCK);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
                 .add(ModBlocks.STARSILVER_BLOCK)
                 .add(ModBlocks.RAW_STARSILVER_BLOCK)
                 .add(ModBlocks.STARSILVER_ORE)
                 .add(ModBlocks.DEEPSLATE_STARSILVER_ORE);
+
     }
 }

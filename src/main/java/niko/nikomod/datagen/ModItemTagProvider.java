@@ -16,6 +16,17 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
         getOrCreateTagBuilder(ModTags.Items.HAMMER_ITEMS)
-                .add(ModItems.IRON_HAMMER);
+                .add(ModItems.IRON_HAMMER)
+                .add(ModItems.GOLD_HAMMER)
+                .add(ModItems.COPPER_HAMMER)
+                .add(ModItems.DIAMOND_HAMMER)
+                .add(ModItems.NETHERITE_HAMMER);
+
+        getOrCreateTagBuilder(ModTags.Items.SHEET_METAL)
+                .add(ModItems.IRON_SHEET_METAL)
+                .add(ModItems.GOLD_SHEET_METAL)
+                .add(ModItems.COPPER_SHEET_METAL)
+                .add(ModItems.DIAMOND_SHEET_METAL)
+                .add(ModItems.NETHERITE_SHEET_METAL);
     }
 }

@@ -32,6 +32,10 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.STARSILVER_ORE, oreDrops(ModBlocks.STARSILVER_ORE, ModItems.RAW_STARSILVER));
         addDrop(ModBlocks.DEEPSLATE_STARSILVER_ORE, multipleOreDrops(ModBlocks.STARSILVER_ORE, ModItems.RAW_STARSILVER, 1, 2));
 
+        addDrop(ModBlocks.HELLCHROME_BLOCK);
+        addDrop(ModBlocks.HELLCHROME_ORE, oreDrops(ModBlocks.HELLCHROME_ORE, ModItems.RAW_HELLCHROME));
+        addDrop(ModBlocks.RAW_HELLCHROME_BLOCK);
+
     }
 
     public LootTable.Builder multipleOreDrops(Block drop, Item item, float minDrops, float maxDrops){
