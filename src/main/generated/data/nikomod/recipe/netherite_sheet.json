@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "minecraft:netherite_ingot"
+    },
+    {
+      "tag": "nikomod:hammer_items"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "nikomod:netherite_sheet"
+  }
+}

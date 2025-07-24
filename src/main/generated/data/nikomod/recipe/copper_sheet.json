@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "minecraft:copper_ingot"
+    },
+    {
+      "item": "minecraft:copper_ingot"
+    },
+    {
+      "tag": "nikomod:hammer_items"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "nikomod:copper_sheet"
+  }
+}
