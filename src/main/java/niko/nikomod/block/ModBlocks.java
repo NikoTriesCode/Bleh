@@ -15,6 +15,7 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import niko.nikomod.NikoMod;
+import niko.nikomod.block.custom.SmithsAnvil;
 
 
 public class ModBlocks {
@@ -23,9 +24,20 @@ public class ModBlocks {
             new Block(AbstractBlock.Settings.create().mapColor(MapColor.LIGHT_BLUE_GRAY).instrument(NoteBlockInstrument.IRON_XYLOPHONE)
                     .requiresTool().strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL)));
 
+    public static final Block HELLCHROME_BLOCK = registerBlock("hellchrome_block",
+            new Block(AbstractBlock.Settings.create().mapColor(MapColor.BRIGHT_RED).instrument(NoteBlockInstrument.BASS)
+            ));
+
+
     public static final Block RAW_STARSILVER_BLOCK = registerBlock("raw_starsilver_block",
             new Block(AbstractBlock.Settings.create().mapColor(MapColor.RAW_IRON_PINK).instrument(NoteBlockInstrument.BASEDRUM)
                     .requiresTool().strength(3.5F, 2.0F)));
+
+    public static final Block RAW_HELLCHROME_BLOCK = registerBlock("raw_hellchrome_block",
+            new Block(AbstractBlock.Settings.create().mapColor(MapColor.RAW_IRON_PINK).instrument(NoteBlockInstrument.BASEDRUM)
+                    .requiresTool().strength(3.0F, 3.5F)));
+
+
 
     public static final Block STARSILVER_ORE = registerBlock("starsilver_ore",
             new ExperienceDroppingBlock(
@@ -47,13 +59,13 @@ public class ModBlocks {
                             .instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(3.0F, 3.5F)
             ));
 
-    public static final Block RAW_HELLCHROME_BLOCK = registerBlock("raw_hellchrome_block",
-            new Block(AbstractBlock.Settings.create().mapColor(MapColor.RAW_IRON_PINK).instrument(NoteBlockInstrument.BASEDRUM)
-                    .requiresTool().strength(3.0F, 3.5F)));
 
-    public static final Block HELLCHROME_BLOCK = registerBlock("hellchrome_block",
-            new Block(AbstractBlock.Settings.create().mapColor(MapColor.BRIGHT_RED).instrument(NoteBlockInstrument.BASS)
-            ));
+
+    public static final Block SMITHSANVIL = registerBlock("smithsanvil", new SmithsAnvil(AbstractBlock.Settings.create().nonOpaque()));
+
+
+
+
 
     private static Block registerBlock(String name, Block block){
         registerBlockItem(name, block);

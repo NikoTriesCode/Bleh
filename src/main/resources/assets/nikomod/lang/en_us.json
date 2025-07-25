@@ -27,8 +27,10 @@
   "block.nikomod.starsilver_ore": "Starsilver Ore",
   "block.nikomod.deepslate_starsilver_ore": "Deepslate Starsilver Ore",
   "block.nikomod.hellchrome_ore": "Netherchrome Ore",
-  "block.nikomod.hellchrome_Block": "Netherchrome Block",
-  "block.nikomod.raw_hellchrome_Block": "Raw Netherchrome Block",
+  "block.nikomod.hellchrome_block": "Netherchrome Block",
+  "block.nikomod.raw_hellchrome_block": "Raw Netherchrome Block",
+
+  "block.nikomod.smithsanvil": "Weaponsmith's Smith's Anvil",
 
   "itemgroup.nikomod.nikos_stuff": "Niko's Modded Stuff"
 }

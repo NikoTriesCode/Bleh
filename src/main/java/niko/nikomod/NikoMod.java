@@ -3,6 +3,7 @@ package niko.nikomod;
 import net.fabricmc.api.ModInitializer;
 
 import niko.nikomod.block.ModBlocks;
+import niko.nikomod.block.entity.ModBlockEntities;
 import niko.nikomod.item.ModItemGroups;
 import niko.nikomod.item.ModItems;
 import niko.nikomod.util.ModEvents;
@@ -20,6 +21,7 @@ public class NikoMod implements ModInitializer {
 		ModItemGroups.registerItemGroups();
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
+		ModBlockEntities.registerBlockEntities();
 		ModEvents.registerModEvents();
 	}
 }

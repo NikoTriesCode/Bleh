@@ -48,6 +48,8 @@ public class ModItemGroups {
                         entries.add(ModItems.IRON_HAMMER);
                         entries.add(ModItems.DIAMOND_HAMMER);
                         entries.add(ModItems.NETHERITE_HAMMER);
+                        //Mechanisms and Custom Interactable
+                        entries.add(ModBlocks.SMITHSANVIL);
                     })
                     .build());
 
