@@ -36,5 +36,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.STARSILVER_ORE)
                 .add(ModBlocks.DEEPSLATE_STARSILVER_ORE);
 
+        getOrCreateTagBuilder(ModTags.Blocks.NEEDS_STARSILVER_TOOL)
+                .addTag(BlockTags.NEEDS_IRON_TOOL);
     }
 }

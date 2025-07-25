@@ -1,7 +1,5 @@
 package niko.nikomod.item.custom;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.AttributeModifierSlot;
 import net.minecraft.component.type.AttributeModifiersComponent;
@@ -10,21 +8,17 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolItem;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import niko.nikomod.util.ModTags;
 
 import java.util.List;
 
-public class HammerItem extends ToolItem {
-    public HammerItem(ToolMaterial toolMaterial, Item.Settings settings) {
-        super(toolMaterial, settings.component(DataComponentTypes.TOOL, createToolComponent()));
+public class HammerItem extends Item {
+    public HammerItem(Item.Settings settings) {
+        super(settings.component(DataComponentTypes.TOOL, createToolComponent()));
     }
 
     private static ToolComponent createToolComponent() {
@@ -48,10 +42,7 @@ public class HammerItem extends ToolItem {
                 .build();
     }
 
-    @Override
-    public boolean canMine(BlockState state, World world, BlockPos pos, PlayerEntity miner) {
-        return !miner.isCreative();
-    }
+
 
     @Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
@@ -71,7 +62,7 @@ public class HammerItem extends ToolItem {
     @Override
     public ItemStack getRecipeRemainder(ItemStack stack) {
         ItemStack damaged = stack.copy();
-        damaged.setDamage(stack.getDamage() + 2);
+        damaged.setDamage(stack.getDamage() + 1);
 
         if (damaged.getDamage() >= damaged.getMaxDamage()) {
             return ItemStack.EMPTY;

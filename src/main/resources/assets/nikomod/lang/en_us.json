@@ -4,11 +4,23 @@
   "item.nikomod.raw_hellchrome": "Raw Netherchrome",
   "item.nikomod.hellchrome_ingot": "Netherchrome Ingot",
 
+  "item.nikomod.iron_sheet": "Iron Sheet",
+  "item.nikomod.gold_sheet": "Gold Sheet",
+  "item.nikomod.copper_sheet": "Copper Sheet",
+  "item.nikomod.diamond_sheet": "Diamond Sheet",
+  "item.nikomod.netherite_sheet": "Netherite Sheet",
+
   "item.nikomod.iron_hammer": "Iron Hammer",
   "item.nikomod.copper_hammer": "Copper Hammer",
   "item.nikomod.gold_hammer": "Gold Hammer",
   "item.nikomod.diamond_hammer": "Diamond Hammer",
   "item.nikomod.netherite_hammer": "Netherite Hammer",
+
+  "item.nikomod.starsilver_sword": "Starsilver Sword",
+  "item.nikomod.starsilver_shovel": "Starsilver Shovel",
+  "item.nikomod.starsilver_pickaxe": "Starsilver Pickaxe",
+  "item.nikomod.starsilver_Axe": "Starsilver Axe",
+  "item.nikomod.starsilver_hoe": "Starsilver Hoe",
 
   "block.nikomod.starsilver_block": "Block of Starsilver",
   "block.nikomod.raw_starsilver_block": "Block of Raw Starsilver",

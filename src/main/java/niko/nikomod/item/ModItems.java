@@ -1,10 +1,7 @@
 package niko.nikomod.item;
 
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroups;
-import net.minecraft.item.SwordItem;
-import net.minecraft.item.ToolMaterials;
+import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -15,7 +12,7 @@ public class ModItems {
     public static final Item STARSILVER_INGOT = registerItem("starsilver_ingot", new Item(new Item.Settings()));
     public static final Item RAW_STARSILVER = registerItem("raw_starsilver", new Item(new Item.Settings()));
     public static final Item RAW_HELLCHROME = registerItem("raw_hellchrome", new Item(new Item.Settings()));
-    public static final Item HELLCHROME_INGOT = registerItem("hellchrome_ingot", new Item(new Item.Settings().fireproof()));
+    public static final Item HELLCHROME_INGOT = registerItem("hellchrome_ingot", new Item(new Item.Settings()));
 
     public static final Item IRON_SHEET_METAL = registerItem("iron_sheet", new Item(new Item.Settings()));
     public static final Item GOLD_SHEET_METAL = registerItem("gold_sheet", new Item(new Item.Settings()));
@@ -23,11 +20,35 @@ public class ModItems {
     public static final Item DIAMOND_SHEET_METAL = registerItem("diamond_sheet", new Item(new Item.Settings()));
     public static final Item NETHERITE_SHEET_METAL = registerItem("netherite_sheet", new Item(new Item.Settings().fireproof()));
 
-    public static final Item IRON_HAMMER = registerItem("iron_hammer", new HammerItem(ToolMaterials.IRON, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.IRON, 6, -3.5F)).maxDamage(72)));
-    public static final Item COPPER_HAMMER = registerItem("copper_hammer", new HammerItem(ToolMaterials.IRON, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.IRON, 5, -3.5F)).maxDamage(48)));
-    public static final Item GOLD_HAMMER = registerItem("gold_hammer", new HammerItem(ToolMaterials.GOLD, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.GOLD, 6, -3.5F)).maxDamage(24)));
-    public static final Item DIAMOND_HAMMER = registerItem("diamond_hammer", new HammerItem(ToolMaterials. DIAMOND, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.DIAMOND, 6, -3.5F)).maxDamage(512)));
-    public static final Item NETHERITE_HAMMER = registerItem("netherite_hammer", new HammerItem(ToolMaterials.NETHERITE, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.NETHERITE, 6, -3.5F)).maxDamage(1024)));
+    public static final Item STARSILVER_SWORD = registerItem(
+            "starsilver_sword",
+            new SwordItem(ModToolMaterials.STARSILVER, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterials.STARSILVER, 3, -2.4F))));
+
+    public static final Item STARSILVER_SHOVEL = registerItem(
+            "starsilver_shovel",
+            new ShovelItem(ModToolMaterials.STARSILVER, new Item.Settings().attributeModifiers(ShovelItem.createAttributeModifiers(ModToolMaterials.STARSILVER, 1.5F, -3.0F)))
+    );
+
+    public static final Item STARSILVER_PICKAXE = registerItem(
+            "starsilver_pickaxe",
+            new PickaxeItem(ModToolMaterials.STARSILVER, new Item.Settings().attributeModifiers(PickaxeItem.createAttributeModifiers(ModToolMaterials.STARSILVER, 1.0F, -2.8F)))
+    );
+
+    public static final Item STARSILVER_AXE = registerItem(
+            "starsilver_axe",
+            new AxeItem(ModToolMaterials.STARSILVER, new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ModToolMaterials.STARSILVER, 6.0F, -3.1F)))
+    );
+
+    public static final Item STARSILVER_HOE = registerItem(
+            "starsilver_hoe",
+            new HoeItem(ModToolMaterials.STARSILVER, new Item.Settings().attributeModifiers(HoeItem.createAttributeModifiers(ModToolMaterials.STARSILVER, -2.0F, -1.0F)))
+    );
+
+    public static final Item IRON_HAMMER = registerItem("iron_hammer", new HammerItem(new Item.Settings().attributeModifiers(HammerItem.createAttributeModifiers(ToolMaterials.IRON, 6, -3.5F)).maxDamage(72)));
+    public static final Item COPPER_HAMMER = registerItem("copper_hammer", new HammerItem(new Item.Settings().attributeModifiers(HammerItem.createAttributeModifiers(ToolMaterials.IRON, 5, -3.5F)).maxDamage(48)));
+    public static final Item GOLD_HAMMER = registerItem("gold_hammer", new HammerItem(new Item.Settings().attributeModifiers(HammerItem.createAttributeModifiers(ToolMaterials.GOLD, 6, -3.5F)).maxDamage(24)));
+    public static final Item DIAMOND_HAMMER = registerItem("diamond_hammer", new HammerItem(new Item.Settings().attributeModifiers(HammerItem.createAttributeModifiers(ToolMaterials.DIAMOND, 6, -3.5F)).maxDamage(512)));
+    public static final Item NETHERITE_HAMMER = registerItem("netherite_hammer", new HammerItem(new Item.Settings().attributeModifiers(HammerItem.createAttributeModifiers(ToolMaterials.NETHERITE, 6, -3.5F)).maxDamage(1024).fireproof()));
 
 
     private static Item registerItem(String name, Item item){

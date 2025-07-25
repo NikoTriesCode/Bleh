@@ -3,6 +3,7 @@ package niko.nikomod.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.ItemTags;
 import niko.nikomod.item.ModItems;
 import niko.nikomod.util.ModTags;
 
@@ -28,5 +29,23 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.COPPER_SHEET_METAL)
                 .add(ModItems.DIAMOND_SHEET_METAL)
                 .add(ModItems.NETHERITE_SHEET_METAL);
+
+        getOrCreateTagBuilder(ModTags.Items.STARSILVER_ITEMS)
+                .add(ModItems.STARSILVER_AXE)
+                .add(ModItems.STARSILVER_SHOVEL)
+                .add(ModItems.STARSILVER_SWORD)
+                .add(ModItems.STARSILVER_PICKAXE)
+                .add(ModItems.STARSILVER_HOE);
+
+        getOrCreateTagBuilder(ItemTags.SWORDS)
+                .add(ModItems.STARSILVER_SWORD);
+        getOrCreateTagBuilder(ItemTags.AXES)
+                .add(ModItems.STARSILVER_AXE);
+        getOrCreateTagBuilder(ItemTags.PICKAXES)
+                .add(ModItems.STARSILVER_PICKAXE);
+        getOrCreateTagBuilder(ItemTags.SHOVELS)
+                .add(ModItems.STARSILVER_SHOVEL);
+        getOrCreateTagBuilder(ItemTags.HOES)
+                .add(ModItems.STARSILVER_HOE);
     }
 }

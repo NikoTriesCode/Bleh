@@ -114,5 +114,49 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(DIAMOND), conditionsFromItem(DIAMOND))
                 .offerTo(exporter);
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModItems.STARSILVER_PICKAXE)
+                .pattern("SSS")
+                .pattern(" T ")
+                .pattern(" T ")
+                .input('S', ModItems.STARSILVER_INGOT)
+                .input('T', STICK)
+                .criterion(hasItem(ModItems.STARSILVER_INGOT), conditionsFromItem(ModItems.STARSILVER_INGOT))
+                .offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItems.STARSILVER_AXE)
+                .pattern("SS")
+                .pattern("ST")
+                .pattern(" T")
+                .input('S', ModItems.STARSILVER_INGOT)
+                .input('T', STICK)
+                .criterion(hasItem(ModItems.STARSILVER_INGOT), conditionsFromItem(ModItems.STARSILVER_INGOT))
+                .offerTo(exporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModItems.STARSILVER_HOE)
+                .pattern("SS")
+                .pattern("T ")
+                .pattern("T ")
+                .input('S', ModItems.STARSILVER_INGOT)
+                .input('T', STICK)
+                .criterion(hasItem(ModItems.STARSILVER_INGOT), conditionsFromItem(ModItems.STARSILVER_INGOT))
+                .offerTo(exporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModItems.STARSILVER_SHOVEL)
+                .pattern("S")
+                .pattern("T")
+                .pattern("T")
+                .input('S', ModItems.STARSILVER_INGOT)
+                .input('T', STICK)
+                .criterion(hasItem(ModItems.STARSILVER_INGOT), conditionsFromItem(ModItems.STARSILVER_INGOT))
+                .offerTo(exporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItems.STARSILVER_SWORD)
+                .pattern("S")
+                .pattern("S")
+                .pattern("T")
+                .input('S', ModItems.STARSILVER_INGOT)
+                .input('T', STICK)
+                .criterion(hasItem(ModItems.STARSILVER_INGOT), conditionsFromItem(ModItems.STARSILVER_INGOT))
+                .offerTo(exporter);
+
     }
 }

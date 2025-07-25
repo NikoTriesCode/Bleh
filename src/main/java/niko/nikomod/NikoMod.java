@@ -5,6 +5,7 @@ import net.fabricmc.api.ModInitializer;
 import niko.nikomod.block.ModBlocks;
 import niko.nikomod.item.ModItemGroups;
 import niko.nikomod.item.ModItems;
+import niko.nikomod.util.ModEvents;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,5 +20,6 @@ public class NikoMod implements ModInitializer {
 		ModItemGroups.registerItemGroups();
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
+		ModEvents.registerModEvents();
 	}
 }

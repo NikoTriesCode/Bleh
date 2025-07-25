@@ -1,3 +1,9 @@
-// 1.21	2025-07-24T11:28:24.8914566	NikoMod/Tags for minecraft:item
+// 1.21	2025-07-25T18:24:06.1748893	NikoMod/Tags for minecraft:item
+55c91e97845a818face8ec57e97138ef321b0603 data\minecraft\tags\item\swords.json
 8b10fb7a62c493879a4e79a95d0cb49f37fddd25 data\nikomod\tags\item\hammer_items.json
+487ed4b96232dd458eec0ec9e0f3ced971a4b057 data\nikomod\tags\item\starsilver_items.json
+dbb1d31b9b67330724fda466e773d1945c0f1ff4 data\minecraft\tags\item\hoes.json
+edf1e418f6ed41c92131a9974ce750f251121c18 data\minecraft\tags\item\shovels.json
 aed60c3e4c9a5a12a938c3e84b7566da9848592b data\nikomod\tags\item\sheet_metals.json
+98b0f721553cddc07b19e5f75214e920fdf48d36 data\minecraft\tags\item\axes.json
+d46ba2cd1f58b3379b012ae37802c3cfaef75517 data\minecraft\tags\item\pickaxes.json
