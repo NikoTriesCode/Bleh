@@ -158,5 +158,49 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.STARSILVER_INGOT), conditionsFromItem(ModItems.STARSILVER_INGOT))
                 .offerTo(exporter);
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModItems.HELLCHROME_PICKAXE)
+                .pattern("HHH")
+                .pattern(" T ")
+                .pattern(" T ")
+                .input('H', ModItems.HELLCHROME_INGOT)
+                .input('T', STICK)
+                .criterion(hasItem(ModItems.HELLCHROME_INGOT), conditionsFromItem(ModItems.HELLCHROME_INGOT))
+                .offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItems.HELLCHROME_AXE)
+                .pattern("HH")
+                .pattern("HT")
+                .pattern(" T")
+                .input('H', ModItems.HELLCHROME_INGOT)
+                .input('T', STICK)
+                .criterion(hasItem(ModItems.HELLCHROME_INGOT), conditionsFromItem(ModItems.HELLCHROME_INGOT))
+                .offerTo(exporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModItems.HELLCHROME_HOE)
+                .pattern("HH")
+                .pattern("T ")
+                .pattern("T ")
+                .input('H', ModItems.HELLCHROME_INGOT)
+                .input('T', STICK)
+                .criterion(hasItem(ModItems.HELLCHROME_INGOT), conditionsFromItem(ModItems.HELLCHROME_INGOT))
+                .offerTo(exporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModItems.HELLCHROME_SHOVEL)
+                .pattern("H")
+                .pattern("T")
+                .pattern("T")
+                .input('H', ModItems.HELLCHROME_INGOT)
+                .input('T', STICK)
+                .criterion(hasItem(ModItems.HELLCHROME_INGOT), conditionsFromItem(ModItems.HELLCHROME_INGOT))
+                .offerTo(exporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItems.HELLCHROME_SWORD)
+                .pattern("H")
+                .pattern("H")
+                .pattern("T")
+                .input('H', ModItems.HELLCHROME_INGOT)
+                .input('T', STICK)
+                .criterion(hasItem(ModItems.HELLCHROME_INGOT), conditionsFromItem(ModItems.HELLCHROME_INGOT))
+                .offerTo(exporter);
+
     }
 }

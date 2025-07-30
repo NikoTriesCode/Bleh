@@ -1,8 +1,8 @@
-// 1.21	2025-07-25T20:36:09.5578148	NikoMod/Block Loot Tables
-50e30efd1d04b41619703a71962968c95384e06c data\nikomod\loot_table\blocks\deepslate_starsilver_ore.json
+// 1.21	2025-07-30T18:55:50.6881075	NikoMod/Block Loot Tables
 c154bd051ade9efa01cb8f86b0f3f720fc5240d0 data\nikomod\loot_table\blocks\raw_starsilver_block.json
-81588153e263b7d4cae7180956c73a80b0e5df50 data\nikomod\loot_table\blocks\hellchrome_ore.json
+50e30efd1d04b41619703a71962968c95384e06c data\nikomod\loot_table\blocks\deepslate_starsilver_ore.json
 487e3348b3021dce9fb3c218abe96933521e2511 data\nikomod\loot_table\blocks\starsilver_block.json
+81588153e263b7d4cae7180956c73a80b0e5df50 data\nikomod\loot_table\blocks\hellchrome_ore.json
 a208b23c98cc67a6213986b26fb72e18b73ac214 data\nikomod\loot_table\blocks\raw_hellchrome_block.json
-3fbbc2b3823a8fe188a4f439c7154514eed1da2f data\nikomod\loot_table\blocks\starsilver_ore.json
 afb0205497e2890b6b05330a53836077ea3bb6a2 data\nikomod\loot_table\blocks\hellchrome_block.json
+3fbbc2b3823a8fe188a4f439c7154514eed1da2f data\nikomod\loot_table\blocks\starsilver_ore.json

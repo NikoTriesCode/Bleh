@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "H": {
+      "item": "nikomod:hellchrome_ingot"
+    },
+    "T": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "HH",
+    "HT",
+    " T"
+  ],
+  "result": {
+    "count": 1,
+    "id": "nikomod:hellchrome_axe"
+  }
+}

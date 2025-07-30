@@ -31,21 +31,35 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.NETHERITE_SHEET_METAL);
 
         getOrCreateTagBuilder(ModTags.Items.STARSILVER_ITEMS)
+                .add(ModItems.STARSILVER_INGOT)
                 .add(ModItems.STARSILVER_AXE)
                 .add(ModItems.STARSILVER_SHOVEL)
                 .add(ModItems.STARSILVER_SWORD)
                 .add(ModItems.STARSILVER_PICKAXE)
                 .add(ModItems.STARSILVER_HOE);
 
+        getOrCreateTagBuilder(ModTags.Items.HELLCHROME_ITEMS)
+                .add(ModItems.HELLCHROME_INGOT)
+                .add(ModItems.HELLCHROME_AXE)
+                .add(ModItems.HELLCHROME_SHOVEL)
+                .add(ModItems.HELLCHROME_SWORD)
+                .add(ModItems.HELLCHROME_PICKAXE)
+                .add(ModItems.HELLCHROME_HOE);
+
         getOrCreateTagBuilder(ItemTags.SWORDS)
-                .add(ModItems.STARSILVER_SWORD);
+                .add(ModItems.STARSILVER_SWORD)
+                .add(ModItems.HELLCHROME_SWORD);
         getOrCreateTagBuilder(ItemTags.AXES)
-                .add(ModItems.STARSILVER_AXE);
+                .add(ModItems.STARSILVER_AXE)
+                .add(ModItems.HELLCHROME_AXE);
         getOrCreateTagBuilder(ItemTags.PICKAXES)
-                .add(ModItems.STARSILVER_PICKAXE);
+                .add(ModItems.STARSILVER_PICKAXE)
+                .add(ModItems.HELLCHROME_PICKAXE);
         getOrCreateTagBuilder(ItemTags.SHOVELS)
-                .add(ModItems.STARSILVER_SHOVEL);
+                .add(ModItems.STARSILVER_SHOVEL)
+                .add(ModItems.HELLCHROME_SHOVEL);
         getOrCreateTagBuilder(ItemTags.HOES)
-                .add(ModItems.STARSILVER_HOE);
+                .add(ModItems.STARSILVER_HOE)
+                .add(ModItems.HELLCHROME_HOE);
     }
 }

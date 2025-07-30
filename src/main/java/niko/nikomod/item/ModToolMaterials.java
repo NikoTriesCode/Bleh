@@ -11,7 +11,11 @@ import java.util.function.Supplier;
 
 public enum ModToolMaterials implements ToolMaterial {
 
-    STARSILVER(ModTags.Blocks.INCORRECT_FOR_STARSILVER_TOOL, 750, 7.0F, 2.5F, 10, () -> Ingredient.ofItems(ModItems.STARSILVER_INGOT));
+    STARSILVER(ModTags.Blocks.INCORRECT_FOR_STARSILVER_TOOL, 750, 7.0F, 2.5F, 10, () -> Ingredient.ofItems(ModItems.STARSILVER_INGOT)),
+    HELLCHROME(ModTags.Blocks.INCORRECT_FOR_HELLCHROME_TOOL, 200, 10.0F, 1.0F, 25, () -> Ingredient.ofItems(ModItems.HELLCHROME_INGOT));
+
+
+
 
 
 

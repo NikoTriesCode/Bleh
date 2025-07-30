@@ -44,6 +44,27 @@ public class ModItems {
             new HoeItem(ModToolMaterials.STARSILVER, new Item.Settings().attributeModifiers(HoeItem.createAttributeModifiers(ModToolMaterials.STARSILVER, -2.0F, -1.0F)))
     );
 
+    public static final Item HELLCHROME_SWORD = registerItem(
+            "hellchrome_sword", new SwordItem(ModToolMaterials.HELLCHROME, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterials.HELLCHROME, 3, -2.4F)))
+    );
+    public static final Item HELLCHROME_SHOVEL = registerItem(
+            "hellchrome_shovel",
+            new ShovelItem(ModToolMaterials.HELLCHROME, new Item.Settings().attributeModifiers(ShovelItem.createAttributeModifiers(ModToolMaterials.HELLCHROME, 1.5F, -3.0F)))
+    );
+    public static final Item HELLCHROME_PICKAXE = registerItem(
+            "hellchrome_pickaxe",
+            new PickaxeItem(ModToolMaterials.HELLCHROME, new Item.Settings().attributeModifiers(PickaxeItem.createAttributeModifiers(ModToolMaterials.HELLCHROME, 1.0F, -2.8F)))
+    );
+    public static final Item HELLCHROME_AXE = registerItem(
+            "hellchrome_axe", new AxeItem(ModToolMaterials.HELLCHROME, new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ModToolMaterials.HELLCHROME, 6.0F, -3.0F)))
+    );
+    public static final Item HELLCHROME_HOE = registerItem(
+            "hellchrome_hoe", new HoeItem(ModToolMaterials.HELLCHROME, new Item.Settings().attributeModifiers(HoeItem.createAttributeModifiers(ModToolMaterials.HELLCHROME, 0.0F, -3.0F)))
+    );
+
+
+
+
     public static final Item IRON_HAMMER = registerItem("iron_hammer", new HammerItem(new Item.Settings().attributeModifiers(HammerItem.createAttributeModifiers(ToolMaterials.IRON, 6, -3.5F)).maxDamage(72)));
     public static final Item COPPER_HAMMER = registerItem("copper_hammer", new HammerItem(new Item.Settings().attributeModifiers(HammerItem.createAttributeModifiers(ToolMaterials.IRON, 5, -3.5F)).maxDamage(48)));
     public static final Item GOLD_HAMMER = registerItem("gold_hammer", new HammerItem(new Item.Settings().attributeModifiers(HammerItem.createAttributeModifiers(ToolMaterials.GOLD, 6, -3.5F)).maxDamage(24)));
@@ -69,6 +90,18 @@ public class ModItems {
             fabricItemGroupEntries.add(GOLD_SHEET_METAL);
             fabricItemGroupEntries.add(DIAMOND_SHEET_METAL);
             fabricItemGroupEntries.add(NETHERITE_SHEET_METAL);
+
+            fabricItemGroupEntries.add(STARSILVER_SWORD);
+            fabricItemGroupEntries.add(STARSILVER_SHOVEL);
+            fabricItemGroupEntries.add(STARSILVER_PICKAXE);
+            fabricItemGroupEntries.add(STARSILVER_AXE);
+            fabricItemGroupEntries.add(STARSILVER_HOE);
+
+            fabricItemGroupEntries.add(HELLCHROME_SWORD);
+            fabricItemGroupEntries.add(HELLCHROME_SHOVEL);
+            fabricItemGroupEntries.add(HELLCHROME_PICKAXE);
+            fabricItemGroupEntries.add(HELLCHROME_AXE);
+            fabricItemGroupEntries.add(HELLCHROME_HOE);
 
             fabricItemGroupEntries.add(IRON_HAMMER);
             fabricItemGroupEntries.add(COPPER_HAMMER);

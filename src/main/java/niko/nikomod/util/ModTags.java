@@ -11,7 +11,9 @@ public class ModTags {
     public static class Blocks{
 
         public static final TagKey<Block> NEEDS_STARSILVER_TOOL = createTag("needs_starsilver_tool");
+        public static final TagKey<Block> NEEDS_HELLCHROME_TOOL = createTag("needs_hellchrome_tool");
         public static final TagKey<Block> INCORRECT_FOR_STARSILVER_TOOL = createTag("incorrect_for_starsilver_tool");
+        public static final TagKey<Block> INCORRECT_FOR_HELLCHROME_TOOL = createTag("incorrect_for_hellchrome_tool");
 
         public static final TagKey<Block> HAMMER_EFFICIENT = createTag("hammer_efficient");
 
@@ -26,6 +28,7 @@ public class ModTags {
         public static final TagKey<Item> HAMMER_ITEMS = createTag("hammer_items");
 
         public static final TagKey<Item> STARSILVER_ITEMS = createTag("starsilver_items");
+        public static final TagKey<Item> HELLCHROME_ITEMS = createTag("hellchrome_items");
 
         public static final TagKey<Item> SHEET_METAL = createTag("sheet_metals");
 

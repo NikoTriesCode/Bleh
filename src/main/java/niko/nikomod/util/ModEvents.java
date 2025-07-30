@@ -5,6 +5,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.registry.tag.EntityTypeTags;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 
 public class ModEvents {
@@ -20,6 +21,20 @@ public class ModEvents {
             }
             return ActionResult.PASS;
         });
+
+        AttackEntityCallback.EVENT.register((player, world, hand, entity, hitResult) -> {
+            if(entity instanceof LivingEntity livingEntity){
+                if(player.getMainHandStack().isIn(ModTags.Items.HELLCHROME_ITEMS) && entity.isOnFire()){
+                    livingEntity.damage(world.getDamageSources().playerAttack(player), 12.0f);
+                    livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 200, 2, false, false));
+                    livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 200,2, false, false ));
+                }
+                return ActionResult.PASS;
+            }
+            return ActionResult.PASS;
+        });
+
+
 
 
     }

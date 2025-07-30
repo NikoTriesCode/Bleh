@@ -19,8 +19,14 @@
   "item.nikomod.starsilver_sword": "Starsilver Sword",
   "item.nikomod.starsilver_shovel": "Starsilver Shovel",
   "item.nikomod.starsilver_pickaxe": "Starsilver Pickaxe",
-  "item.nikomod.starsilver_Axe": "Starsilver Axe",
+  "item.nikomod.starsilver_axe": "Starsilver Axe",
   "item.nikomod.starsilver_hoe": "Starsilver Hoe",
+
+  "item.nikomod.hellchrome_sword": "Hellchrome Sword",
+  "item.nikomod.hellchrome_shovel": "Hellchrome Shovel",
+  "item.nikomod.hellchrome_pickaxe": "Hellchrome Pickaxe",
+  "item.nikomod.hellchrome_axe": "Hellchrome Axe",
+  "item.nikomod.hellchrome_hoe": "Hellchrome Hoe",
 
   "block.nikomod.starsilver_block": "Block of Starsilver",
   "block.nikomod.raw_starsilver_block": "Block of Raw Starsilver",
