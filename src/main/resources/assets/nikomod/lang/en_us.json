@@ -1,8 +1,8 @@
 {
   "item.nikomod.starsilver_ingot": "Starsilver Ingot",
   "item.nikomod.raw_starsilver": "Raw Starsilver",
-  "item.nikomod.raw_hellchrome": "Raw Netherchrome",
-  "item.nikomod.hellchrome_ingot": "Netherchrome Ingot",
+  "item.nikomod.raw_hellchrome": "Raw Hellchrome",
+  "item.nikomod.hellchrome_ingot": "Hellchrome Ingot",
 
   "item.nikomod.iron_sheet": "Iron Sheet",
   "item.nikomod.gold_sheet": "Gold Sheet",
@@ -32,11 +32,11 @@
   "block.nikomod.raw_starsilver_block": "Block of Raw Starsilver",
   "block.nikomod.starsilver_ore": "Starsilver Ore",
   "block.nikomod.deepslate_starsilver_ore": "Deepslate Starsilver Ore",
-  "block.nikomod.hellchrome_ore": "Netherchrome Ore",
-  "block.nikomod.hellchrome_block": "Netherchrome Block",
-  "block.nikomod.raw_hellchrome_block": "Raw Netherchrome Block",
+  "block.nikomod.hellchrome_ore": "Hellchrome Ore",
+  "block.nikomod.hellchrome_block": "Hellchrome Block",
+  "block.nikomod.raw_hellchrome_block": "Raw Hellchrome Block",
 
-  "block.nikomod.smithsanvil": "Weaponsmith's Smith's Anvil",
+  "block.nikomod.smithsanvil": "Weaponsmith's Anvil",
 
   "itemgroup.nikomod.nikos_stuff": "Niko's Modded Stuff"
 }

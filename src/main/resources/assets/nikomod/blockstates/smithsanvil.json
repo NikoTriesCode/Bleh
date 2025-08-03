@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "nikomod:block/smithsanvil",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "nikomod:block/smithsanvil",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "nikomod:block/smithsanvil"
+    },
+    "facing=west": {
+      "model": "nikomod:block/smithsanvil",
+      "y": 90
+    }
+  }
+}
