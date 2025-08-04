@@ -9,11 +9,16 @@ import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.util.BlockRotation;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import niko.nikomod.block.custom.SmithsAnvil;
 import niko.nikomod.block.entity.ModBlockEntities;
 import niko.nikomod.block.entity.ModBlockInterface;
 import org.jetbrains.annotations.Nullable;
+
+import static niko.nikomod.block.custom.SmithsAnvil.FACING;
 
 public class SmithsAnvilEntity extends BlockEntity implements ModBlockInterface {
 
@@ -50,5 +55,11 @@ public class SmithsAnvilEntity extends BlockEntity implements ModBlockInterface 
     public NbtCompound toInitialChunkDataNbt(RegistryWrapper.WrapperLookup registryLookup) {
         return createNbt(registryLookup);
     }
+
+
+
+
+
+
 
 }

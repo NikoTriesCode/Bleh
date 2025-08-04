@@ -7,7 +7,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
@@ -18,6 +17,7 @@ import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.Vec3i;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
@@ -48,6 +48,9 @@ public class SmithsAnvil extends BlockWithEntity implements BlockEntityProvider 
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().rotateYClockwise());
     }
+
+
+
 
     @Override
     protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
@@ -118,5 +121,16 @@ public class SmithsAnvil extends BlockWithEntity implements BlockEntityProvider 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(FACING);
+    }
+
+    public static float getFacingAngle(BlockState state) {
+        Direction facing = state.get(SmithsAnvil.FACING);
+        return switch (facing) {
+            case NORTH -> 0f;
+            case SOUTH -> 180f;
+            case WEST  -> 90f;
+            case EAST  -> -90f;
+            default    -> 0f;
+        };
     }
 }
