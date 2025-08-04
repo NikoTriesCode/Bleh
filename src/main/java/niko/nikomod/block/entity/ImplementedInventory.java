@@ -5,14 +5,27 @@ import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SidedInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.Direction;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-
-public interface ModBlockInterface extends SidedInventory {
+/**
+ * A simple {@code SidedInventory} implementation with only default methods + an item list getter.
+ *
+ * <h2>Reading and writing to tags</h2>
+ * Use {@link Inventories#writeNbt(NbtCompound, DefaultedList, RegistryWrapper.WrapperLookup)} and
+ * {@link Inventories#readNbt(NbtCompound, DefaultedList, RegistryWrapper.WrapperLookup)}
+ * on {@linkplain #getItems() the item list}.
+ *
+ * License: <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>
+ * @author Juuz
+ */
+@FunctionalInterface
+public interface ImplementedInventory extends SidedInventory {
     /**
      * Gets the item list of this inventory.
      * Must return the same instance every time it's called.
@@ -27,7 +40,7 @@ public interface ModBlockInterface extends SidedInventory {
      * @param items the item list
      * @return a new inventory
      */
-    static ModBlockInterface of(DefaultedList<ItemStack> items) {
+    static ImplementedInventory of(DefaultedList<ItemStack> items) {
         return () -> items;
     }
 
@@ -37,7 +50,7 @@ public interface ModBlockInterface extends SidedInventory {
      * @param size the inventory size
      * @return a new inventory
      */
-    static ModBlockInterface ofSize(int size) {
+    static ImplementedInventory ofSize(int size) {
         return of(DefaultedList.ofSize(size, ItemStack.EMPTY));
     }
 

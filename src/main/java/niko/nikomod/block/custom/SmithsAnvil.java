@@ -3,9 +3,15 @@ package niko.nikomod.block.custom;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityTicker;
+import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.block.entity.FurnaceBlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
+import net.minecraft.recipe.RecipeType;
+import net.minecraft.screen.NamedScreenHandlerFactory;
+import net.minecraft.screen.ScreenHandlerFactory;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
@@ -17,11 +23,11 @@ import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.Vec3i;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import niko.nikomod.block.entity.ModBlockEntities;
 import niko.nikomod.block.entity.custom.SmithsAnvilEntity;
 import org.jetbrains.annotations.Nullable;
 
@@ -91,22 +97,10 @@ public class SmithsAnvil extends BlockWithEntity implements BlockEntityProvider 
     @Override
     protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world,
                                              BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-      if(world.getBlockEntity(pos) instanceof SmithsAnvilEntity smithsAnvilEntity){
-          if(smithsAnvilEntity.isEmpty() && !stack.isEmpty()) {
-              smithsAnvilEntity.setStack(0, stack.copyWithCount(1));
-              world.playSound(player, pos, SoundEvents.BLOCK_ANVIL_USE, SoundCategory.BLOCKS, 1f, 2f);
-              stack.decrement(1);
-
-              smithsAnvilEntity.markDirty();
-              world.updateListeners(pos, state, state, 0);
-          } else if(stack.isEmpty() && !player.isSneaking()){
-              ItemStack stackOnAnvil = smithsAnvilEntity.getStack(0);
-              player.setStackInHand(Hand.MAIN_HAND, stackOnAnvil);
-              world.playSound(player, pos, SoundEvents.BLOCK_ANVIL_BREAK, SoundCategory.BLOCKS, 1f ,1f);
-              smithsAnvilEntity.clear();
-
-              smithsAnvilEntity.markDirty();
-              world.updateListeners(pos, state, state, 0);
+      if(!player.isSneaking() && !world.isClient()){
+          NamedScreenHandlerFactory screenHandlerFactory = ((SmithsAnvilEntity) world.getBlockEntity(pos));
+          if(screenHandlerFactory != null){
+              player.openHandledScreen(screenHandlerFactory);
           }
       }
       return ItemActionResult.SUCCESS;
@@ -133,4 +127,14 @@ public class SmithsAnvil extends BlockWithEntity implements BlockEntityProvider 
             default    -> 0f;
         };
     }
+    @Nullable
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+        if (world.isClient()) {
+            return null;
+        }
+
+        return validateTicker(type, ModBlockEntities.SANVIL_BE, ((world1, pos, state1, blockEntity) -> blockEntity.tick(world1, pos, state1)));
+    }
+
 }

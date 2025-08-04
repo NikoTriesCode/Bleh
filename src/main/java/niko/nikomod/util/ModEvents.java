@@ -10,6 +10,7 @@ import net.minecraft.util.ActionResult;
 
 public class ModEvents {
     public static void registerModEvents() {
+
         AttackEntityCallback.EVENT.register((player, world, hand, entity, hitResult) -> {
             if(entity instanceof LivingEntity livingEntity){
                 if(player.getMainHandStack().isIn(ModTags.Items.STARSILVER_ITEMS) && entity.getType().isIn(EntityTypeTags.SENSITIVE_TO_SMITE)){
