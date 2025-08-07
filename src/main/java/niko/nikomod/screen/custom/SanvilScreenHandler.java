@@ -72,7 +72,34 @@ public class SanvilScreenHandler extends AbstractRecipeScreenHandler<CraftingRec
             @Override public boolean canInsert(ItemStack stack) { return stack.isIn(ModTags.Items.HAMMER_ITEMS); }
             @Override public int getMaxItemCount() { return 1; }
         });
-        this.addSlot(new CraftingResultSlot(this.player, this.input, this.result, RESULT_SLOT, 138, 35));
+        this.addSlot(new CraftingResultSlot(this.player, this.input, this.result, RESULT_SLOT, 138, 35) {
+            @Override
+            public void onTakeItem(PlayerEntity player, ItemStack crafted) {
+                super.onTakeItem(player, crafted);
+
+                // Damage the hammer in the block entity's slot 0
+                Inventory hammerInv = blockEntity.getInventory();
+                ItemStack hammer = hammerInv.getStack(0);
+
+                if (!hammer.isEmpty() && hammer.isDamageable()) {
+                    // Manual durability change to avoid version-specific overloads
+                    int dmg = hammer.getDamage() + 1;
+                    if (dmg >= hammer.getMaxDamage()) {
+                        hammer.decrement(1); // breaks
+                    } else {
+                        hammer.setDamage(dmg);
+                    }
+                    hammerInv.markDirty();
+                    // (Optional) break animation:
+                    if (player instanceof ServerPlayerEntity spe) {
+                        spe.currentScreenHandler.sendContentUpdates(); // sync UI
+                    }
+                }
+
+                // Recompute output after inputs + hammer changed
+                onContentChanged(input);
+            }
+        });
 
 
         for (int i = 0; i < 3; ++i) {

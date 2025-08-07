@@ -39,11 +39,12 @@ public class SmithsAnvilEntityRenderer implements BlockEntityRenderer<SmithsAnvi
         float angle = getFacingAngle(state);
 
         matrices.push();
-        matrices.translate(0.5f, 1.0f, 0.5f);
+        matrices.translate(0.37f, 0.55f, 0.9f);
         matrices.scale(0.5f, 0.5f, 0.5f);
 
-        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(angle));
-        matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(90));
+        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(angle + 90));
+        matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(180));
+        matrices.multiply(RotationAxis.NEGATIVE_Z.rotationDegrees(45));
         itemRenderer.renderItem(stack, ModelTransformationMode.FIXED, getLightLevel(entity.getWorld(),
                 entity.getPos()), OverlayTexture.DEFAULT_UV, matrices, vertexConsumers, entity.getWorld(), 1);
         matrices.pop();
