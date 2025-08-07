@@ -13,6 +13,7 @@ public class ModBlockEntities {
             Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(NikoMod.MOD_ID, "sanvil_be"),
                     BlockEntityType.Builder.create(SmithsAnvilEntity::new, ModBlocks.SMITHSANVIL).build(null));
 
+
     public static void registerBlockEntities(){
         NikoMod.LOGGER.info("Registering Block Entities for " + NikoMod.MOD_ID);
     }

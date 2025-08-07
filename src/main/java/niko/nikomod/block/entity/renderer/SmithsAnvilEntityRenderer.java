@@ -17,6 +17,7 @@ import net.minecraft.util.math.RotationAxis;
 import net.minecraft.world.LightType;
 import net.minecraft.world.World;
 import niko.nikomod.block.entity.custom.SmithsAnvilEntity;
+import niko.nikomod.screen.custom.SanvilScreenHandler;
 
 import static niko.nikomod.block.custom.SmithsAnvil.getFacingAngle;
 
@@ -32,7 +33,7 @@ public class SmithsAnvilEntityRenderer implements BlockEntityRenderer<SmithsAnvi
     public void render(SmithsAnvilEntity entity, float tickDelta, MatrixStack matrices,
                        VertexConsumerProvider vertexConsumers, int light, int overlay) {
         ItemRenderer itemRenderer = MinecraftClient.getInstance().getItemRenderer();
-        ItemStack stack = entity.getStack(1);
+        ItemStack stack = entity.getStack( 0);
 
         BlockState state = entity.getCachedState();
         float angle = getFacingAngle(state);
