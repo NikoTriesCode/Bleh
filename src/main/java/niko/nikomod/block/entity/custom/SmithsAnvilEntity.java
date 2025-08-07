@@ -1,6 +1,7 @@
 package niko.nikomod.block.entity.custom;
 
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -25,27 +26,25 @@ import niko.nikomod.screen.custom.SanvilScreenHandler;
 import org.jetbrains.annotations.Nullable;
 
 
-public class SmithsAnvilEntity  extends BlockEntity implements ExtendedScreenHandlerFactory<BlockPos>, ImplementedInventory {
+public class SmithsAnvilEntity extends BlockEntity
+        implements ExtendedScreenHandlerFactory<BlockPos>, ImplementedInventory {
+
+    // === Inventory: ONLY the hammer slot (index 0) ===
+    private static final int HAMMER_SLOT = 0;
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(1, ItemStack.EMPTY);
-
-
 
     public SmithsAnvilEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.SANVIL_BE, pos, state);
-
     }
 
-    public Inventory getInventory() {
-        return this;
-    }
+    // Expose to the handler
+    public Inventory getInventory() { return this; }
 
-
-
+    // ImplementedInventory
     @Override
-    public DefaultedList<ItemStack> getItems() {
-        return inventory;
-    }
+    public DefaultedList<ItemStack> getItems() { return inventory; }
 
+    // UI factory bits
     @Override
     public Text getDisplayName() {
         return Text.translatable("block.nikomod.smithsanvil");
@@ -57,6 +56,7 @@ public class SmithsAnvilEntity  extends BlockEntity implements ExtendedScreenHan
         return new SanvilScreenHandler(syncId, playerInventory, ScreenHandlerContext.create(world, pos));
     }
 
+    // Persist hammer
     @Override
     protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
         super.writeNbt(nbt, registryLookup);
@@ -65,11 +65,11 @@ public class SmithsAnvilEntity  extends BlockEntity implements ExtendedScreenHan
 
     @Override
     protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
-        Inventories.readNbt(nbt, inventory, registryLookup);
         super.readNbt(nbt, registryLookup);
+        Inventories.readNbt(nbt, inventory, registryLookup);
     }
 
-
+    // Client sync
     @Nullable
     @Override
     public Packet<ClientPlayPacketListener> toUpdatePacket() {
@@ -81,11 +81,18 @@ public class SmithsAnvilEntity  extends BlockEntity implements ExtendedScreenHan
         return createNbt(registryLookup);
     }
 
+    // ExtendedScreenHandlerFactory payload (we send the BlockPos)
     @Override
     public BlockPos getScreenOpeningData(ServerPlayerEntity player) {
         return this.pos;
     }
 
-
+    // Optional: ensure clients update when hammer changes
+    @Override
+    public void markDirty() {
+        super.markDirty();
+        if (world != null && !world.isClient) {
+            world.updateListeners(pos, getCachedState(), getCachedState(), Block.NOTIFY_ALL);
+        }
+    }
 }
-

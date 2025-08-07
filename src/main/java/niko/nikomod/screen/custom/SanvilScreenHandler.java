@@ -11,33 +11,48 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.CraftingRecipe;
 import net.minecraft.recipe.RecipeEntry;
 import net.minecraft.recipe.RecipeMatcher;
+import net.minecraft.recipe.RecipeType;
 import net.minecraft.recipe.book.RecipeBookCategory;
 import net.minecraft.recipe.input.CraftingRecipeInput;
 import net.minecraft.screen.*;
 import net.minecraft.screen.slot.CraftingResultSlot;
 import net.minecraft.screen.slot.Slot;
+import net.minecraft.server.network.ServerPlayerEntity;
 import niko.nikomod.block.ModBlocks;
 import niko.nikomod.block.entity.custom.SmithsAnvilEntity;
+import niko.nikomod.recipes.ModRecipes;
+import niko.nikomod.recipes.SanvilRecipeInput;
 import niko.nikomod.screen.ModScreenHandlers;
 import niko.nikomod.screen.gui_slots.HammerSlot;
+import niko.nikomod.util.ModTags;
 
 import java.util.concurrent.atomic.AtomicReference;
 
 public class SanvilScreenHandler extends AbstractRecipeScreenHandler<CraftingRecipeInput, CraftingRecipe> {
 
-    public static final int RESULT_ID = 0;
-    private static final int INPUT_START = 1;
-    private static final int INPUT_END = 10;
-    private static final int INVENTORY_START = 10;
-    private static final int INVENTORY_END = 37;
-    private static final int HOTBAR_START = 37;
-    private static final int HOTBAR_END = 46;
+    // Replace your constants with these (ENDs are exclusive)
+    private static final int RESULT_SLOT       = 0;
+    private static final int GRID_START        = 1;   // 1..9
+    private static final int GRID_END          = 10;  // exclusive
+    private static final int HAMMER_SLOT       = 10;  // single slot
+    private static final int PLAYER_START      = 11;  // 27 slots
+    private static final int PLAYER_END        = 38;  // exclusive
+    private static final int HOTBAR_START      = 38;  // 9 slots
+    private static final int HOTBAR_END        = 47;  // exclusive
     private final RecipeInputInventory input = new CraftingInventory(this, 3, 3);
     private final CraftingResultInventory result = new CraftingResultInventory();
-    private boolean filling;
     private final SmithsAnvilEntity blockEntity;
     private final ScreenHandlerContext context;
     private final PlayerEntity player;
+
+    private boolean isUsableHammer(ItemStack stack) {
+        if (stack.isEmpty()) return false;
+        if (!stack.isIn(ModTags.Items.HAMMER_ITEMS)) return false;
+        // If every hammer is damageable, enforce it:
+        if (!stack.isDamageable()) return false;
+        return stack.getDamage() < stack.getMaxDamage();
+    }
+
 
 
 
@@ -53,8 +68,11 @@ public class SanvilScreenHandler extends AbstractRecipeScreenHandler<CraftingRec
         this.blockEntity = beRef.get();
         this.context = context;
         this.player = playerInventory.player;
-        this.addSlot(new HammerSlot(blockEntity.getInventory(), 0, 18, 35));
-        this.addSlot(new CraftingResultSlot(playerInventory.player, this.input, this.result, 47, 138, 35));
+        this.addSlot(new Slot(blockEntity.getInventory(), 0, 18, 35) {
+            @Override public boolean canInsert(ItemStack stack) { return stack.isIn(ModTags.Items.HAMMER_ITEMS); }
+            @Override public int getMaxItemCount() { return 1; }
+        });
+        this.addSlot(new CraftingResultSlot(this.player, this.input, this.result, RESULT_SLOT, 138, 35));
 
 
         for (int i = 0; i < 3; ++i) {
@@ -80,50 +98,52 @@ public class SanvilScreenHandler extends AbstractRecipeScreenHandler<CraftingRec
 
 
     @Override
-    public ItemStack quickMove(PlayerEntity player, int slot) {
-        ItemStack itemStack = ItemStack.EMPTY;
-        Slot slot2 = this.slots.get(slot);
-        if (slot2 != null && slot2.hasStack()) {
-            ItemStack itemStack2 = slot2.getStack();
-            itemStack = itemStack2.copy();
-            if (slot == 0) {
-                this.context.run((world, pos) -> itemStack2.getItem().onCraftByPlayer(itemStack2, world, player));
-                if (!this.insertItem(itemStack2, 10, 46, true)) {
-                    return ItemStack.EMPTY;
-                }
+    public ItemStack quickMove(PlayerEntity player, int index) {
+        ItemStack ret = ItemStack.EMPTY;
+        Slot slot = this.slots.get(index);
+        if (slot == null || !slot.hasStack()) return ItemStack.EMPTY;
 
-                slot2.onQuickTransfer(itemStack2, itemStack);
-            } else if (slot >= 10 && slot < 46) {
-                if (!this.insertItem(itemStack2, 1, 10, false)) {
-                    if (slot < 37) {
-                        if (!this.insertItem(itemStack2, 37, 46, false)) {
-                            return ItemStack.EMPTY;
-                        }
-                    } else if (!this.insertItem(itemStack2, 10, 37, false)) {
-                        return ItemStack.EMPTY;
-                    }
-                }
-            } else if (!this.insertItem(itemStack2, 10, 46, false)) {
-                return ItemStack.EMPTY;
-            }
+        ItemStack stack = slot.getStack();
+        ret = stack.copy();
 
-            if (itemStack2.isEmpty()) {
-                slot2.setStack(ItemStack.EMPTY);
-            } else {
-                slot2.markDirty();
-            }
-
-            if (itemStack2.getCount() == itemStack.getCount()) {
-                return ItemStack.EMPTY;
-            }
-
-            slot2.onTakeItem(player, itemStack2);
-            if (slot == 0) {
-                player.dropItem(itemStack2, false);
+        // Taking result -> move to player inventory
+        if (index == RESULT_SLOT) {
+            this.context.run((world, pos) -> stack.getItem().onCraftByPlayer(stack, world, player));
+            if (!this.insertItem(stack, PLAYER_START, HOTBAR_END, true)) return ItemStack.EMPTY;
+            slot.onQuickTransfer(stack, ret);
+            slot.onTakeItem(player, stack);
+        }
+        // From hammer slot -> player
+        else if (index == HAMMER_SLOT) {
+            if (!this.insertItem(stack, PLAYER_START, HOTBAR_END, false)) return ItemStack.EMPTY;
+        }
+        // From player inv/hotbar
+        else if (index >= PLAYER_START && index < HOTBAR_END) {
+            if (stack.isIn(ModTags.Items.HAMMER_ITEMS)) {
+                if (!this.insertItem(stack, HAMMER_SLOT, HAMMER_SLOT + 1, false)) return ItemStack.EMPTY;
+            } else if (!this.insertItem(stack, GRID_START, GRID_END, false)) {
+                // swap between main ↔ hotbar
+                if (index < PLAYER_END) {
+                    if (!this.insertItem(stack, HOTBAR_START, HOTBAR_END, false)) return ItemStack.EMPTY;
+                } else if (!this.insertItem(stack, PLAYER_START, PLAYER_END, false)) return ItemStack.EMPTY;
             }
         }
+        // From grid -> player
+        else if (index >= GRID_START && index < GRID_END) {
+            if (!this.insertItem(stack, PLAYER_START, HOTBAR_END, false)) return ItemStack.EMPTY;
+        }
+        // Anything else
+        else if (!this.insertItem(stack, PLAYER_START, HOTBAR_END, false)) {
+            return ItemStack.EMPTY;
+        }
 
-        return itemStack;
+        if (stack.isEmpty()) slot.setStack(ItemStack.EMPTY);
+        else slot.markDirty();
+
+        if (stack.getCount() == ret.getCount()) return ItemStack.EMPTY;
+
+        slot.onTakeItem(player, stack);
+        return ret;
     }
 
     @Override
@@ -188,6 +208,31 @@ public class SanvilScreenHandler extends AbstractRecipeScreenHandler<CraftingRec
         this.context.run((world, pos) -> this.dropInventory(player, this.input));
     }
 
+    @Override
+    public void onContentChanged(Inventory inventory) {
+        super.onContentChanged(inventory);
+        if (this.player.getWorld().isClient) return;
 
+        ItemStack hammer = this.blockEntity.getInventory().getStack(0);
+        ItemStack out = ItemStack.EMPTY;
+
+
+        if (isUsableHammer(hammer)) {
+            var server = this.player.getServer();
+            if (server != null) {
+                var rm = server.getRecipeManager();
+                SanvilRecipeInput sanvilInput = SanvilRecipeInput.of(hammer, this.input);
+
+                var match = rm.getFirstMatch(ModRecipes.SANVIL_SHAPED_TYPE, sanvilInput, this.player.getWorld());
+                if (match.isPresent()) {
+                    ItemStack craft = match.get().value().craft(sanvilInput, this.player.getWorld().getRegistryManager());
+                    if (!craft.isEmpty()) out = craft;
+                }
+            }
+        }
+
+        this.result.setStack(RESULT_SLOT, out);
+        this.sendContentUpdates();
+    }
 
 }

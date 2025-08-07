@@ -6,6 +6,7 @@ import niko.nikomod.block.ModBlocks;
 import niko.nikomod.block.entity.ModBlockEntities;
 import niko.nikomod.item.ModItemGroups;
 import niko.nikomod.item.ModItems;
+import niko.nikomod.recipes.ModRecipes;
 import niko.nikomod.screen.ModScreenHandlers;
 import niko.nikomod.util.ModEvents;
 import niko.nikomod.world.gen.ModWorldGeneration;
@@ -27,5 +28,6 @@ public class NikoMod implements ModInitializer {
 		ModEvents.registerModEvents();
 		ModWorldGeneration.generateWorldGen();
 		ModScreenHandlers.registerScreenHandlers();
+		ModRecipes.registerRecipes();
 	}
 }

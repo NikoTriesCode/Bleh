@@ -1,0 +1,15 @@
+{
+  "type": "nikomod:smiths_anvil_shaped",
+  "require_hammer": true,
+  "hammer": { "tag": "nikomod:hammer_items" },
+  "pattern": [
+    " P ",
+    " I ",
+    " I "
+  ],
+  "key": {
+    "P": { "item": "minecraft:iron_ingot" },
+    "I": { "item": "minecraft:stick" }
+  },
+  "result": { "id": "minecraft:stone", "count": 1 }
+}

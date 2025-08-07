@@ -128,5 +128,4 @@ public class SmithsAnvil extends BlockWithEntity implements BlockEntityProvider 
         };
     }
 
-
 }
