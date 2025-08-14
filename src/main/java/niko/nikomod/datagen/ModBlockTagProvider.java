@@ -23,7 +23,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.DEEPSLATE_STARSILVER_ORE)
                 .add(ModBlocks.HELLCHROME_BLOCK)
                 .add(ModBlocks.RAW_HELLCHROME_BLOCK)
-                .add(ModBlocks.HELLCHROME_ORE);
+                .add(ModBlocks.HELLCHROME_ORE)
+                .add(ModBlocks.SMITHSANVIL);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
                 .add(ModBlocks.HELLCHROME_ORE)
@@ -34,7 +35,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.STARSILVER_BLOCK)
                 .add(ModBlocks.RAW_STARSILVER_BLOCK)
                 .add(ModBlocks.STARSILVER_ORE)
-                .add(ModBlocks.DEEPSLATE_STARSILVER_ORE);
+                .add(ModBlocks.DEEPSLATE_STARSILVER_ORE)
+                .add(ModBlocks.SMITHSANVIL);
 
         getOrCreateTagBuilder(ModTags.Blocks.NEEDS_STARSILVER_TOOL)
                 .addTag(BlockTags.NEEDS_IRON_TOOL);

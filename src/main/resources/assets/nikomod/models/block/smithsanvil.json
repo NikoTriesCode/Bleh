@@ -10,7 +10,8 @@
 		"15": "nikomod:block/sanvil/for_the_hammer",
 		"17": "nikomod:block/sanvil/saw1",
 		"18": "nikomod:block/sanvil/saw2",
-		"19": "nikomod:block/sanvil/scissors"
+		"19": "nikomod:block/sanvil/scissors",
+		"particle": "nikomod:block/sanvil/gate"
 	},
 	"elements": [
 		{

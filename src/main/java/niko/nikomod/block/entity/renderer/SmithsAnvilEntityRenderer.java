@@ -13,11 +13,12 @@ import net.minecraft.client.render.model.json.ModelTransformationMode;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.RotationAxis;
 import net.minecraft.world.LightType;
 import net.minecraft.world.World;
+import niko.nikomod.block.custom.SmithsAnvil;
 import niko.nikomod.block.entity.custom.SmithsAnvilEntity;
-import niko.nikomod.screen.custom.SanvilScreenHandler;
 
 import static niko.nikomod.block.custom.SmithsAnvil.getFacingAngle;
 
@@ -37,19 +38,48 @@ public class SmithsAnvilEntityRenderer implements BlockEntityRenderer<SmithsAnvi
 
         BlockState state = entity.getCachedState();
         float angle = getFacingAngle(state);
+        Direction facing = state.get(SmithsAnvil.FACING);
+
 
         matrices.push();
-        matrices.translate(0.37f, 0.55f, 0.9f);
-        matrices.scale(0.5f, 0.5f, 0.5f);
 
-        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(angle + 90));
+// Rotate the whole local space to match block's facing
+        matrices.translate(0.5, 0.5, 0.5); // move origin to block center
+        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-facing.asRotation()));
+        matrices.translate(-0.13f, 0.05f, 0.4f);
+
+// Now translate in "north-facing local space"
+
+        matrices.scale(0.5f, 0.5f, 0.5f);
+        matrices.translate(-0.5f, 0f, -1.075f);
         matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(180));
+        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(90));
         matrices.multiply(RotationAxis.NEGATIVE_Z.rotationDegrees(45));
-        itemRenderer.renderItem(stack, ModelTransformationMode.FIXED, getLightLevel(entity.getWorld(),
-                entity.getPos()), OverlayTexture.DEFAULT_UV, matrices, vertexConsumers, entity.getWorld(), 1);
+
+        itemRenderer.renderItem(stack, ModelTransformationMode.FIXED,
+                getLightLevel(entity.getWorld(), entity.getPos()),
+                OverlayTexture.DEFAULT_UV, matrices, vertexConsumers, entity.getWorld(), 1);
+
         matrices.pop();
 
+
+        ItemStack result = entity.getDisplayResult();
+        if (!result.isEmpty()) {
+
+            matrices.push();
+            matrices.translate(0.5f, 1.0f, 0.5f);
+            matrices.scale(0.5f, 0.5f, 0.5f);
+
+            matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(angle - 45));
+            matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(90));
+            itemRenderer.renderItem(result, ModelTransformationMode.FIXED,
+                    getLightLevel(entity.getWorld(), entity.getPos()),
+                    OverlayTexture.DEFAULT_UV, matrices, vertexConsumers, entity.getWorld(), 2);
+            matrices.pop();
+        }
     }
+
+
 
     private int getLightLevel(World world, BlockPos pos) {
         int bLight = world.getLightLevel(LightType.BLOCK, pos);

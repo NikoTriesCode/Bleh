@@ -10,6 +10,7 @@ import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.NbtElement;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
@@ -37,6 +38,21 @@ public class SmithsAnvilEntity extends BlockEntity
         super(ModBlockEntities.SANVIL_BE, pos, state);
     }
 
+
+    private static final String TAG_DISPLAY_RESULT = "DisplayResult";
+    private ItemStack displayResult = ItemStack.EMPTY;
+
+    public ItemStack getDisplayResult() { return displayResult; }
+
+    public void setDisplayResult(ItemStack stack) {
+        this.displayResult = stack.isEmpty() ? ItemStack.EMPTY : stack.copy();
+        markDirty();
+        if (world != null && !world.isClient) {
+            world.updateListeners(pos, getCachedState(), getCachedState(), Block.NOTIFY_LISTENERS);
+        }
+    }
+
+
     // Expose to the handler
     public Inventory getInventory() { return this; }
 
@@ -58,15 +74,28 @@ public class SmithsAnvilEntity extends BlockEntity
 
     // Persist hammer
     @Override
-    protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
-        super.writeNbt(nbt, registryLookup);
-        Inventories.writeNbt(nbt, inventory, registryLookup);
+    protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup lookup) {
+        super.writeNbt(nbt, lookup);
+        Inventories.writeNbt(nbt, getItems(), lookup); // your hammer slot
+        if (!displayResult.isEmpty()) {
+            nbt.put(TAG_DISPLAY_RESULT, displayResult.encode(lookup));
+        } else {
+            // Optional: ensure tag is absent if empty
+            nbt.remove(TAG_DISPLAY_RESULT);
+        }
     }
 
     @Override
-    protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
-        super.readNbt(nbt, registryLookup);
-        Inventories.readNbt(nbt, inventory, registryLookup);
+    protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup lookup) {
+        super.readNbt(nbt, lookup);
+        Inventories.readNbt(nbt, getItems(), lookup);
+
+        if (nbt.contains(TAG_DISPLAY_RESULT, NbtElement.COMPOUND_TYPE)) {
+            this.displayResult = ItemStack.fromNbt(lookup, nbt.getCompound(TAG_DISPLAY_RESULT))
+                    .orElse(ItemStack.EMPTY);
+        } else {
+            this.displayResult = ItemStack.EMPTY;
+        }
     }
 
     // Client sync
@@ -75,6 +104,7 @@ public class SmithsAnvilEntity extends BlockEntity
     public Packet<ClientPlayPacketListener> toUpdatePacket() {
         return BlockEntityUpdateS2CPacket.create(this);
     }
+
 
     @Override
     public NbtCompound toInitialChunkDataNbt(RegistryWrapper.WrapperLookup registryLookup) {

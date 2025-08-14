@@ -36,6 +36,8 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.HELLCHROME_ORE, oreDrops(ModBlocks.HELLCHROME_ORE, ModItems.RAW_HELLCHROME));
         addDrop(ModBlocks.RAW_HELLCHROME_BLOCK);
 
+        addDrop(ModBlocks.SMITHSANVIL);
+
     }
 
     public LootTable.Builder multipleOreDrops(Block drop, Item item, float minDrops, float maxDrops){

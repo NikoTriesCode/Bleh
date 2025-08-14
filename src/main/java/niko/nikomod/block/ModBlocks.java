@@ -6,6 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.ExperienceDroppingBlock;
 import net.minecraft.block.MapColor;
 import net.minecraft.block.enums.NoteBlockInstrument;
+import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
@@ -61,7 +62,13 @@ public class ModBlocks {
 
 
 
-    public static final Block SMITHSANVIL = registerBlock("smithsanvil", new SmithsAnvil(AbstractBlock.Settings.create().nonOpaque()));
+    public static final Block SMITHSANVIL = registerBlock("smithsanvil", new SmithsAnvil(AbstractBlock.Settings.create()
+            .mapColor(MapColor.IRON_GRAY)
+            .requiresTool()
+            .strength(5.0F, 1200.0F)
+            .sounds(BlockSoundGroup.ANVIL)
+            .pistonBehavior(PistonBehavior.BLOCK)
+    ));
 
 
 

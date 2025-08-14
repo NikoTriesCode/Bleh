@@ -18,6 +18,10 @@ import net.minecraft.screen.*;
 import net.minecraft.screen.slot.CraftingResultSlot;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import niko.nikomod.block.ModBlocks;
 import niko.nikomod.block.entity.custom.SmithsAnvilEntity;
 import niko.nikomod.recipes.ModRecipes;
@@ -71,6 +75,12 @@ public class SanvilScreenHandler extends AbstractRecipeScreenHandler<CraftingRec
         this.addSlot(new Slot(blockEntity.getInventory(), 0, 18, 35) {
             @Override public boolean canInsert(ItemStack stack) { return stack.isIn(ModTags.Items.HAMMER_ITEMS); }
             @Override public int getMaxItemCount() { return 1; }
+
+            private void fireUpdate() { SanvilScreenHandler.this.onContentChanged(this.inventory); }
+
+            @Override public void markDirty() { super.markDirty(); fireUpdate(); }
+            @Override public void onTakeItem(PlayerEntity player, ItemStack stack) { super.onTakeItem(player, stack); fireUpdate(); }
+            @Override public void setStack(ItemStack stack) { super.setStack(stack); fireUpdate(); }
         });
         this.addSlot(new CraftingResultSlot(this.player, this.input, this.result, RESULT_SLOT, 138, 35) {
             @Override
@@ -95,7 +105,18 @@ public class SanvilScreenHandler extends AbstractRecipeScreenHandler<CraftingRec
                         spe.currentScreenHandler.sendContentUpdates(); // sync UI
                     }
                 }
-
+                if (!player.getWorld().isClient) {
+                    World world = player.getWorld();
+                    BlockPos pos = blockEntity.getPos();
+                    world.playSound(
+                            /* player */ null,                 // null = broadcast to all nearby
+                            pos,
+                            SoundEvents.BLOCK_ANVIL_USE,       // pick any sound you like
+                            SoundCategory.BLOCKS,
+                            1.0f,                               // volume
+                            0.9f + world.random.nextFloat() * 0.2f // slight pitch variance
+                    );
+                }
                 // Recompute output after inputs + hammer changed
                 onContentChanged(input);
             }
@@ -144,10 +165,13 @@ public class SanvilScreenHandler extends AbstractRecipeScreenHandler<CraftingRec
         else if (index == HAMMER_SLOT) {
             if (!this.insertItem(stack, PLAYER_START, HOTBAR_END, false)) return ItemStack.EMPTY;
         }
+
         // From player inv/hotbar
         else if (index >= PLAYER_START && index < HOTBAR_END) {
             if (stack.isIn(ModTags.Items.HAMMER_ITEMS)) {
-                if (!this.insertItem(stack, HAMMER_SLOT, HAMMER_SLOT + 1, false)) return ItemStack.EMPTY;
+                if (!this.insertItem(stack, HAMMER_SLOT, HAMMER_SLOT + 1, false)) {
+                    return ItemStack.EMPTY;
+                }
             } else if (!this.insertItem(stack, GRID_START, GRID_END, false)) {
                 // swap between main ↔ hotbar
                 if (index < PLAYER_END) {
@@ -233,33 +257,32 @@ public class SanvilScreenHandler extends AbstractRecipeScreenHandler<CraftingRec
     public void onClosed(PlayerEntity player) {
         super.onClosed(player);
         this.context.run((world, pos) -> this.dropInventory(player, this.input));
+        if (!player.getWorld().isClient && blockEntity != null) {
+            blockEntity.setDisplayResult(ItemStack.EMPTY);
+        }
     }
 
     @Override
-    public void onContentChanged(Inventory inventory) {
-        super.onContentChanged(inventory);
-        if (this.player.getWorld().isClient) return;
+    public void onContentChanged(Inventory inv) {
+        super.onContentChanged(inv);
+        if (player.getWorld().isClient) return;
 
-        ItemStack hammer = this.blockEntity.getInventory().getStack(0);
+        ItemStack hammer = blockEntity.getInventory().getStack(0);
         ItemStack out = ItemStack.EMPTY;
 
-
         if (isUsableHammer(hammer)) {
-            var server = this.player.getServer();
-            if (server != null) {
-                var rm = server.getRecipeManager();
-                SanvilRecipeInput sanvilInput = SanvilRecipeInput.of(hammer, this.input);
+            var rm = player.getServer().getRecipeManager();
+            var sin = SanvilRecipeInput.of(hammer, this.input);
 
-                var match = rm.getFirstMatch(ModRecipes.SANVIL_SHAPED_TYPE, sanvilInput, this.player.getWorld());
-                if (match.isPresent()) {
-                    ItemStack craft = match.get().value().craft(sanvilInput, this.player.getWorld().getRegistryManager());
-                    if (!craft.isEmpty()) out = craft;
-                }
-            }
+            var m = rm.getFirstMatch(ModRecipes.SANVIL_SHAPED_TYPE, sin, player.getWorld());
+            if (m.isPresent()) out = m.get().value().craft(sin, player.getWorld().getRegistryManager());
+            // (optional) fallback to your uniform type if you support both...
         }
 
         this.result.setStack(RESULT_SLOT, out);
-        this.sendContentUpdates();
+        // If you do the live-preview render:
+        if (blockEntity != null) blockEntity.setDisplayResult(out);
+        sendContentUpdates();
     }
 
 }
