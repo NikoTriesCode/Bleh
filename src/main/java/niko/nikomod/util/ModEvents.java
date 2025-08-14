@@ -1,12 +1,14 @@
 package niko.nikomod.util;
 
-import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
+import net.fabricmc.fabric.api.event.player.*;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.registry.tag.EntityTypeTags;
-import net.minecraft.text.Text;
+
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
+import net.minecraft.util.TypedActionResult;
 
 public class ModEvents {
     public static void registerModEvents() {
@@ -35,7 +37,41 @@ public class ModEvents {
             return ActionResult.PASS;
         });
 
+        UseItemCallback.EVENT.register((player, world, hand) -> {
+            if (hand == Hand.OFF_HAND && player.getMainHandStack().isIn(ModTags.Items.HALBERD_ITEMS)) {
+                return TypedActionResult.fail(player.getStackInHand(hand));
+            }
+            return TypedActionResult.pass(player.getStackInHand(hand));
+        });
 
+
+        UseBlockCallback.EVENT.register((player, world, hand, hitResult) -> {
+            if (hand == Hand.OFF_HAND && player.getMainHandStack().isIn(ModTags.Items.HALBERD_ITEMS)) {
+                return ActionResult.FAIL;
+            }
+            return ActionResult.PASS;
+        });
+
+        UseEntityCallback.EVENT.register((player, world, hand, entity, hitResult) -> {
+            if (hand == Hand.OFF_HAND && player.getMainHandStack().isIn(ModTags.Items.HALBERD_ITEMS)) {
+                return ActionResult.FAIL;
+            }
+            return ActionResult.PASS;
+        });
+
+        AttackBlockCallback.EVENT.register((player, world, hand, pos, direction) -> {
+            if (hand == Hand.OFF_HAND && player.getMainHandStack().isIn(ModTags.Items.HALBERD_ITEMS)) {
+                return ActionResult.FAIL;
+            }
+            return ActionResult.PASS;
+        });
+
+        AttackEntityCallback.EVENT.register((player, world, hand, entity, hitResult) -> {
+            if (hand == Hand.OFF_HAND && player.getMainHandStack().isIn(ModTags.Items.HALBERD_ITEMS)) {
+                return ActionResult.FAIL;
+            }
+            return ActionResult.PASS;
+        });
 
 
     }

@@ -30,6 +30,8 @@ public class ModTags {
         public static final TagKey<Item> STARSILVER_ITEMS = createTag("starsilver_items");
         public static final TagKey<Item> HELLCHROME_ITEMS = createTag("hellchrome_items");
 
+        public static final TagKey<Item> HALBERD_ITEMS = createTag("halberd_items");
+
         public static final TagKey<Item> SHEET_METAL = createTag("sheet_metals");
 
         private static TagKey<Item> createTag(String name){

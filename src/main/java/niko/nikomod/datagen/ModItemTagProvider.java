@@ -36,7 +36,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.STARSILVER_SHOVEL)
                 .add(ModItems.STARSILVER_SWORD)
                 .add(ModItems.STARSILVER_PICKAXE)
-                .add(ModItems.STARSILVER_HOE);
+                .add(ModItems.STARSILVER_HOE)
+                .add(ModItems.STARSILVER_HALBERD);
 
         getOrCreateTagBuilder(ModTags.Items.HELLCHROME_ITEMS)
                 .add(ModItems.HELLCHROME_INGOT)
@@ -44,21 +45,42 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.HELLCHROME_SHOVEL)
                 .add(ModItems.HELLCHROME_SWORD)
                 .add(ModItems.HELLCHROME_PICKAXE)
-                .add(ModItems.HELLCHROME_HOE);
+                .add(ModItems.HELLCHROME_HOE)
+                .add(ModItems.HELLCHROME_HALBERD);
+
+        getOrCreateTagBuilder(ModTags.Items.HALBERD_ITEMS)
+                .add(ModItems.IRON_HALBERD)
+                .add(ModItems.GOLD_HALBERD)
+                .add(ModItems.DIAMOND_HALBERD)
+                .add(ModItems.NETHERITE_HALBERD)
+                .add(ModItems.STARSILVER_HALBERD)
+                .add(ModItems.HELLCHROME_HALBERD);
+
+        getOrCreateTagBuilder(ItemTags.SWORD_ENCHANTABLE)
+                .add(ModItems.IRON_HALBERD)
+                .add(ModItems.GOLD_HALBERD)
+                .add(ModItems.DIAMOND_HALBERD)
+                .add(ModItems.NETHERITE_HALBERD)
+                .add(ModItems.STARSILVER_HALBERD)
+                .add(ModItems.HELLCHROME_HALBERD);
 
         getOrCreateTagBuilder(ItemTags.SWORDS)
                 .add(ModItems.STARSILVER_SWORD)
                 .add(ModItems.HELLCHROME_SWORD)
-                .add(ModItems.IRON_HALBERD);
+                .addTag(ModTags.Items.HALBERD_ITEMS);
+
         getOrCreateTagBuilder(ItemTags.AXES)
                 .add(ModItems.STARSILVER_AXE)
                 .add(ModItems.HELLCHROME_AXE);
+
         getOrCreateTagBuilder(ItemTags.PICKAXES)
                 .add(ModItems.STARSILVER_PICKAXE)
                 .add(ModItems.HELLCHROME_PICKAXE);
+
         getOrCreateTagBuilder(ItemTags.SHOVELS)
                 .add(ModItems.STARSILVER_SHOVEL)
                 .add(ModItems.HELLCHROME_SHOVEL);
+
         getOrCreateTagBuilder(ItemTags.HOES)
                 .add(ModItems.STARSILVER_HOE)
                 .add(ModItems.HELLCHROME_HOE);

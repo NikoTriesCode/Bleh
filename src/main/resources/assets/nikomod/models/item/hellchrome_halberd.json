@@ -1,0 +1,7 @@
+{
+  "parent": "nikomod:item/halberd",
+  "textures": {
+    "1": "nikomod:item/halberd/hellchrome_halberd",
+    "particle": "nikomod:item/halberd/hellchrome_halberd"
+  }
+}

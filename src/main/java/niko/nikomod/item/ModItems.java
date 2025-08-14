@@ -68,8 +68,29 @@ public class ModItems {
 
     public static final Item IRON_HALBERD = registerItem(
             "iron_halberd",
-            new HalberdItem(new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ToolMaterials.IRON, 10.0F, -3.8F)).maxDamage(1080))
+            new HalberdItem(new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ToolMaterials.IRON, 10.0F, -3.8F)).maxDamage(712))
     );
+    public static final Item GOLD_HALBERD = registerItem(
+            "gold_halberd",
+            new HalberdItem(new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ToolMaterials.GOLD, 10.0F, -3.8F)).maxDamage(200))
+    );
+    public static final Item DIAMOND_HALBERD = registerItem(
+            "diamond_halberd",
+            new HalberdItem(new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ToolMaterials.DIAMOND, 10.0F, -3.8F)).maxDamage(1580))
+    );
+    public static final Item NETHERITE_HALBERD = registerItem(
+            "netherite_halberd",
+            new HalberdItem(new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ToolMaterials.NETHERITE, 10.0F, -3.8F)).maxDamage(2400))
+    );
+    public static final Item STARSILVER_HALBERD = registerItem(
+            "starsilver_halberd",
+            new HalberdItem(new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ModToolMaterials.STARSILVER, 10.0F, -3.8F)).maxDamage(990))
+    );
+    public static final Item HELLCHROME_HALBERD = registerItem(
+            "hellchrome_halberd",
+            new HalberdItem(new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ModToolMaterials.HELLCHROME, 10.0F, -3.8F)).maxDamage(440))
+    );
+
 
 
 
@@ -113,6 +134,11 @@ public class ModItems {
 
 
             fabricItemGroupEntries.add(IRON_HALBERD);
+            fabricItemGroupEntries.add(GOLD_HALBERD);
+            fabricItemGroupEntries.add(DIAMOND_HALBERD);
+            fabricItemGroupEntries.add(NETHERITE_HALBERD);
+            fabricItemGroupEntries.add(STARSILVER_HALBERD);
+            fabricItemGroupEntries.add(HELLCHROME_HALBERD);
 
             fabricItemGroupEntries.add(IRON_HAMMER);
             fabricItemGroupEntries.add(COPPER_HAMMER);
