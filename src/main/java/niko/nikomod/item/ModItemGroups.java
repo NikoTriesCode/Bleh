@@ -48,7 +48,9 @@ public class ModItemGroups {
                         entries.add(ModItems.HELLCHROME_PICKAXE);
                         entries.add(ModItems.HELLCHROME_AXE);
                         entries.add(ModItems.HELLCHROME_HOE);
+
                         //Useful Items
+                        entries.add(ModItems.IRON_HALBERD);
                         entries.add(ModItems.COPPER_HAMMER);
                         entries.add(ModItems.GOLD_HAMMER);
                         entries.add(ModItems.IRON_HAMMER);

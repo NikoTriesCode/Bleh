@@ -48,7 +48,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
         getOrCreateTagBuilder(ItemTags.SWORDS)
                 .add(ModItems.STARSILVER_SWORD)
-                .add(ModItems.HELLCHROME_SWORD);
+                .add(ModItems.HELLCHROME_SWORD)
+                .add(ModItems.IRON_HALBERD);
         getOrCreateTagBuilder(ItemTags.AXES)
                 .add(ModItems.STARSILVER_AXE)
                 .add(ModItems.HELLCHROME_AXE);

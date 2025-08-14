@@ -3,13 +3,13 @@
   "require_hammer": true,
   "hammer": { "tag": "nikomod:hammer_items" },
   "pattern": [
-    " P ",
-    " I ",
+    "PPP",
+    "PI ",
     " I "
   ],
   "key": {
-    "P": { "item": "minecraft:iron_ingot" },
+    "P": { "item": "nikomod:iron_sheet" },
     "I": { "item": "minecraft:stick" }
   },
-  "result": { "id": "minecraft:stone", "count": 1 }
+  "result": { "id": "nikomod:iron_halberd", "count": 1 }
 }

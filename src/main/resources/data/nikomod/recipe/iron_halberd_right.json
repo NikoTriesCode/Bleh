@@ -1,0 +1,15 @@
+{
+  "type": "nikomod:smiths_anvil_shaped",
+  "require_hammer": true,
+  "hammer": { "tag": "nikomod:hammer_items" },
+  "pattern": [
+    "PPP",
+    " IP",
+    " I "
+  ],
+  "key": {
+    "P": { "item": "nikomod:iron_sheet" },
+    "I": { "item": "minecraft:stick" }
+  },
+  "result": { "id": "nikomod:iron_halberd", "count": 1 }
+}

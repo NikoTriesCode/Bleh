@@ -6,7 +6,10 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import niko.nikomod.NikoMod;
+import niko.nikomod.item.custom.HalberdItem;
 import niko.nikomod.item.custom.HammerItem;
+
+import javax.tools.Tool;
 
 public class ModItems {
     public static final Item STARSILVER_INGOT = registerItem("starsilver_ingot", new Item(new Item.Settings()));
@@ -63,6 +66,11 @@ public class ModItems {
     );
 
 
+    public static final Item IRON_HALBERD = registerItem(
+            "iron_halberd",
+            new HalberdItem(new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ToolMaterials.IRON, 10.0F, -3.8F)).maxDamage(1080))
+    );
+
 
 
     public static final Item IRON_HAMMER = registerItem("iron_hammer", new HammerItem(new Item.Settings().attributeModifiers(HammerItem.createAttributeModifiers(ToolMaterials.IRON, 6, -3.5F)).maxDamage(72)));
@@ -102,6 +110,9 @@ public class ModItems {
             fabricItemGroupEntries.add(HELLCHROME_PICKAXE);
             fabricItemGroupEntries.add(HELLCHROME_AXE);
             fabricItemGroupEntries.add(HELLCHROME_HOE);
+
+
+            fabricItemGroupEntries.add(IRON_HALBERD);
 
             fabricItemGroupEntries.add(IRON_HAMMER);
             fabricItemGroupEntries.add(COPPER_HAMMER);
