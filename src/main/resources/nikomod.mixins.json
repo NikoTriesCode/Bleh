@@ -3,9 +3,9 @@
 	"package": "niko.nikomod.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"ExampleMixin"
+
 	],
-	"injectors": {
-		"defaultRequire": 1
-	}
+	"client": ["MinecraftClientMixin"],
+	"injectors": { "defaultRequire": 1 },
+	"refmap": "nikomod.refmap.json"
 }

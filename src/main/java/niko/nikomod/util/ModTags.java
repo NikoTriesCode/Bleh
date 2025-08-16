@@ -26,6 +26,7 @@ public class ModTags {
     public static class Items {
 
         public static final TagKey<Item> HAMMER_ITEMS = createTag("hammer_items");
+        public static final TagKey<Item> HEAVY_WEAPONS = createTag("heavy_weapons");
 
         public static final TagKey<Item> STARSILVER_ITEMS = createTag("starsilver_items");
         public static final TagKey<Item> HELLCHROME_ITEMS = createTag("hellchrome_items");

@@ -1,4 +1,4 @@
-// 1.21	2025-08-14T14:58:36.2195185	NikoMod/Model Definitions
+// 1.21	2025-08-15T10:10:45.8318624	NikoMod/Model Definitions
 5bf562efe8570d1c3adfaffb2278d8f2d4d424ed assets\nikomod\models\item\raw_starsilver.json
 f1d3cf3d02da48a1a6df47e354899e065b0c5e7a assets\nikomod\blockstates\starsilver_block.json
 21e8e1f9c22cdea2e2e8b6c0fbbf2185e7c7bf6a assets\nikomod\models\block\raw_hellchrome_block.json
@@ -16,13 +16,13 @@ a44f72a369821e4f5ec5267703dd6e90a7445ad8 assets\nikomod\models\item\hellchrome_o
 8c8b66a48bfffa8fc70fda01cbc68ac1a870b738 assets\nikomod\models\item\starsilver_block.json
 b1f536443c0274afb7dc4ac50fea4198efadbb51 assets\nikomod\models\item\gold_hammer.json
 50b79bba38e88ae116e2433ce9653315c437a5b5 assets\nikomod\models\item\hellchrome_axe.json
-eb8758faa572ec724a73049b87d54dd8cbfeed76 assets\nikomod\blockstates\hellchrome_block.json
 582ff57b776fc5be2ce3bf1c071d4761db1217ad assets\nikomod\blockstates\deepslate_starsilver_ore.json
+eb8758faa572ec724a73049b87d54dd8cbfeed76 assets\nikomod\blockstates\hellchrome_block.json
 114be4ee121d384517d1fffdc69f31627558507f assets\nikomod\models\item\gold_sheet.json
 6ff87941f2351ca58310a5ce4003aea73c9c283f assets\nikomod\blockstates\starsilver_ore.json
 1857ce7cee0e45c10b67409e05ec91a6e269b111 assets\nikomod\models\item\raw_hellchrome_block.json
-83bae441dd6a791a213bf9ac1098ffed3ddb8483 assets\nikomod\models\item\starsilver_pickaxe.json
 0a1bebee058364d8b987d7e1a5af622069a85a30 assets\nikomod\models\item\hellchrome_block.json
+83bae441dd6a791a213bf9ac1098ffed3ddb8483 assets\nikomod\models\item\starsilver_pickaxe.json
 3e7e43d9cfa684c91c865b2afc5577ca4767ca45 assets\nikomod\models\item\starsilver_axe.json
 447813b7290b37122e48f50bbb5fd6984d9ec4d3 assets\nikomod\models\item\starsilver_sword.json
 f1eb96898aa67714ee84c2b20e9c88d2ca2a9625 assets\nikomod\models\block\hellchrome_ore.json

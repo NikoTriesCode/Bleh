@@ -1,9 +1,9 @@
-// 1.21	2025-08-14T14:58:36.221023	NikoMod/
+// 1.21	2025-08-15T10:10:45.8348639	NikoMod/
 45c7603669622a70ff7707478a91cda9f9a95bfa data\nikomod\worldgen\placed_feature\hellchrome_ore_placed.json
 9b4cc16aeb505ed7cdea748899c05eb858eec44f data\nikomod\worldgen\placed_feature\starsilver_ore_placed_medium.json
 38d1894f59365c48d29a0f6a56e74df29ece78a5 data\nikomod\worldgen\configured_feature\starsilver_ore_small.json
 e4d8e437155731077e099210cc469d23350b71e3 data\nikomod\worldgen\placed_feature\starsilver_ore_placed_small.json
-dad2aaf5283e5e7e227ce6d9e87b56db97173f31 data\nikomod\worldgen\configured_feature\starsilver_ore_medium.json
 d8e9a20351dd3c35010ec5a1ba0b8199dae571a8 data\nikomod\worldgen\configured_feature\hellchrome_ore.json
+dad2aaf5283e5e7e227ce6d9e87b56db97173f31 data\nikomod\worldgen\configured_feature\starsilver_ore_medium.json
 e2229ecf3cb35e0854d59c28d06e9748ae66b2c8 data\nikomod\worldgen\placed_feature\starsilver_ore_placed_large.json
 88705c83fd2e576e6ce9a76e940b700de564d6d3 data\nikomod\worldgen\configured_feature\starsilver_ore_large.json

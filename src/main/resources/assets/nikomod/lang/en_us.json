@@ -30,6 +30,11 @@
 
 
   "item.nikomod.iron_halberd": "Iron Halberd",
+  "item.nikomod.gold_halberd": "Gold Halberd",
+  "item.nikomod.diamond_halberd": "Diamond Halberd",
+  "item.nikomod.netherite_halberd": "Netherite Halberd",
+  "item.nikomod.starsilver_halberd": "Starsilver Halberd",
+  "item.nikomod.hellchrome_halberd": "Hellchrome Halberd",
 
   "block.nikomod.starsilver_block": "Block of Starsilver",
   "block.nikomod.raw_starsilver_block": "Block of Raw Starsilver",

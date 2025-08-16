@@ -4,24 +4,15 @@ import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.util.Hand;
-import net.minecraft.util.hit.HitResult;
-import net.minecraft.world.RaycastContext;
 import niko.nikomod.block.ModBlocks;
 import niko.nikomod.block.entity.ModBlockEntities;
 import niko.nikomod.item.ModItemGroups;
 import niko.nikomod.item.ModItems;
-import niko.nikomod.item.custom.HalberdReach;
 import niko.nikomod.recipes.ModRecipes;
 import niko.nikomod.screen.ModScreenHandlers;
 import niko.nikomod.util.ModEvents;
-import niko.nikomod.util.ModTags;
-import niko.nikomod.util.network.HalberdAttackPayload;
-import niko.nikomod.util.network.NetIds;
-import niko.nikomod.util.network.ServerAttackHandler;
+import niko.nikomod.util.network.ReachCode.ExtendedAttackHandler;
+import niko.nikomod.util.network.ReachCode.HalberdAttackPayload;
 import niko.nikomod.world.gen.ModWorldGeneration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,14 +34,13 @@ public class NikoMod implements ModInitializer {
 		ModScreenHandlers.registerScreenHandlers();
 		ModRecipes.registerRecipes();
 
-
+		LOGGER.info("[Halberd] NikoMod.onInitialize() START");
 		PayloadTypeRegistry.playC2S().register(HalberdAttackPayload.ID, HalberdAttackPayload.CODEC);
 		ServerPlayNetworking.registerGlobalReceiver(HalberdAttackPayload.ID, (payload, ctx) -> {
+			LOGGER.info("[Halberd] SERVER recv packet id={}, target={}", HalberdAttackPayload.ID.id(), payload.targetId());
 			var player = ctx.player();
-			player.getServerWorld().getServer().execute(() ->
-					niko.nikomod.util.network.ServerAttackHandler.handle(player, payload.entityId())
-			);
+			ctx.server().execute(() -> ExtendedAttackHandler.handle(player, payload.targetId()));
 		});
-
+		LOGGER.info("[Halberd] SERVER channel registered {}", HalberdAttackPayload.ID.id());
 	}
 }
